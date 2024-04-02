@@ -1,0 +1,7 @@
+{
+  "extends": "@tomchochola/typescript-config/src/configs/recommended.json",
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "outDir": "./dist"
+  }
+}

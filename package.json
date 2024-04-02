@@ -1,0 +1,47 @@
+{
+  "name": "@tomchochola/react-template",
+  "description": "react template",
+  "keywords": [
+    "tomchochola",
+    "react-template"
+  ],
+  "homepage": "https://github.com/tomchochola/react-template",
+  "bugs": {
+    "email": "chocholatom1997@gmail.com",
+    "url": "https://github.com/tomchochola/react-template/issues"
+  },
+  "license": "SEE LICENSE IN ./LICENSE.md",
+  "author": {
+    "email": "chocholatom1997@gmail.com",
+    "name": "Tomáš Chochola",
+    "url": "https://github.com/tomchochola"
+  },
+  "contributors": [
+    {
+      "email": "chocholatom1997@gmail.com",
+      "name": "Tomáš Chochola",
+      "url": "https://github.com/tomchochola"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/tomchochola"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomchochola/react-template.git"
+  },
+  "devDependencies": {
+    "@tomchochola/prettier-config": "github:tomchochola/prettier-config",
+    "@tomchochola/eslint-config": "github:tomchochola/eslint-config",
+    "@tomchochola/stylelint-config": "github:tomchochola/stylelint-config",
+    "@tomchochola/typescript-config": "github:tomchochola/typescript-config",
+    "@tomchochola/webpack-config": "github:tomchochola/webpack-config",
+    "@tomchochola/postcss-config": "github:tomchochola/postcss-config",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "private": true,
+  "type": "module"
+}
