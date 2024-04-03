@@ -46,14 +46,15 @@ assets: ./node_modules/.bin/svgo
 .PHONY: serve
 serve: ./node_modules/.bin/webpack-cli
 	./node_modules/.bin/webpack-cli serve --mode=development --node-env=development
-	
+
 .PHONY: transpile
-transpile: ./node_modules/.bin/webpack-cli
-	./node_modules/.bin/webpack-cli serve --mode=production --node-env=production
+transpile: ./node_modules/.bin/tsc ./node_modules/.bin/sass
+	./node_modules/.bin/tsc
+	./node_modules/.bin/sass ./src:./dist
 
 # Deploy / Release
 .PHONY: local
-local: ./node_modules/.bin/webpack-cli
+local:
 	npm install --install-links --include prod --include dev --include peer --include optional
 	./node_modules/.bin/webpack-cli build --mode=development --node-env=development
 
@@ -64,8 +65,8 @@ testing: local
 development: testing
 
 .PHONY: staging
-staging: ./node_modules/.bin/webpack-cli
-	npm install --install-links --include prod --omit dev --include peer --include optional
+staging:
+	npm install --install-links --include prod --include dev --include peer --include optional
 	./node_modules/.bin/webpack-cli build --mode=production --node-env=production
 
 .PHONY: production
