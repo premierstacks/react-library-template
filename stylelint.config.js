@@ -16,6 +16,6 @@
  * - Sponsor & License: https://github.com/sponsors/tomchochola
  */
 
-import { configs } from '@tomchochola/stylelint-config';
+import { configs } from '@premierstacks/stylelint-config';
 
 export default configs.recommended();

@@ -16,6 +16,6 @@
  * - Sponsor & License: https://github.com/sponsors/tomchochola
  */
 
-import { configs } from '@tomchochola/postcss-config';
+import { configs } from '@premierstacks/postcss-config';
 
 export default configs.recommended();

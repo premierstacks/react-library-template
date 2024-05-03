@@ -16,7 +16,7 @@
  * - Sponsor & License: https://github.com/sponsors/tomchochola
  */
 
-import { configs } from '@tomchochola/webpack-config';
+import { configs } from '@premierstacks/webpack-config';
 
 export default function (env, argv) {
   const config = configs.reactTs(env, argv, ['./src/index.tsx', './src/index.scss']);
