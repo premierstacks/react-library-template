@@ -38,9 +38,9 @@
     "@premierstacks/typescript-config": "github:premierstacks/typescript-config",
     "@premierstacks/webpack-config": "github:premierstacks/webpack-config",
     "@premierstacks/postcss-config": "github:premierstacks/postcss-config",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react": "^18.3",
+    "react-dom": "^18.3",
+    "react-router-dom": "^6.23"
   },
   "private": true,
   "type": "module"
