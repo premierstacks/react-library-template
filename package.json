@@ -33,12 +33,12 @@
     "url": "https://github.com/premierstacks/react-template.git"
   },
   "devDependencies": {
-    "@premierstacks/prettier-config": "github:premierstacks/prettier-config",
-    "@premierstacks/eslint-config": "github:premierstacks/eslint-config",
-    "@premierstacks/stylelint-config": "github:premierstacks/stylelint-config",
-    "@premierstacks/typescript-config": "github:premierstacks/typescript-config",
-    "@premierstacks/webpack-config": "github:premierstacks/webpack-config",
-    "@premierstacks/postcss-config": "github:premierstacks/postcss-config",
+    "@premierstacks/prettier-stack": "github:premierstacks/prettier-stack",
+    "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack",
+    "@premierstacks/stylelint-stack": "github:premierstacks/stylelint-stack",
+    "@premierstacks/typescript-stack": "github:premierstacks/typescript-stack",
+    "@premierstacks/webpack-stack": "github:premierstacks/webpack-stack",
+    "@premierstacks/postcss-stack": "github:premierstacks/postcss-stack",
     "react": "^18.3",
     "react-dom": "^18.3",
     "react-router-dom": "^6.23"

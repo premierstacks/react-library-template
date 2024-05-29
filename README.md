@@ -71,12 +71,12 @@ Review and ensure your license covers the usage of these dependencies, or remove
 
 The React Template encapsulates a myriad of preconfigured features to streamline the development of dynamic and responsive web applications:
 
-- **ESLint**: Utilizes `@premierstacks/eslint-config` for JavaScript and TypeScript linting, ensuring adherence to coding standards and enhancing code quality.
-- **Prettier**: Integrated with `@premierstacks/prettier-config` for code formatting, providing a consistent code style across the project.
-- **Stylelint**: Configured with `@premierstacks/stylelint-config` for CSS and SCSS linting, maintaining the quality and consistency of stylesheets.
-- **TypeScript Configuration**: Incorporates `@premierstacks/typescript-config` for TypeScript, offering strong typing and advanced JavaScript features for scalable application development.
-- **Webpack Configuration**: Leverages `@premierstacks/webpack-config` for asset bundling and optimization, tailored for React applications to ensure efficient loading and performance.
-- **PostCSS Configuration**: Uses `@premierstacks/postcss-config` for transforming CSS with JavaScript, enabling features like autoprefixing and future CSS syntax.
+- **ESLint**: Utilizes `@premierstacks/eslint-stack` for JavaScript and TypeScript linting, ensuring adherence to coding standards and enhancing code quality.
+- **Prettier**: Integrated with `@premierstacks/prettier-stack` for code formatting, providing a consistent code style across the project.
+- **Stylelint**: Configured with `@premierstacks/stylelint-stack` for CSS and SCSS linting, maintaining the quality and consistency of stylesheets.
+- **TypeScript Configuration**: Incorporates `@premierstacks/typescript-stack` for TypeScript, offering strong typing and advanced JavaScript features for scalable application development.
+- **Webpack Configuration**: Leverages `@premierstacks/webpack-stack` for asset bundling and optimization, tailored for React applications to ensure efficient loading and performance.
+- **PostCSS Configuration**: Uses `@premierstacks/postcss-stack` for transforming CSS with JavaScript, enabling features like autoprefixing and future CSS syntax.
 - **Development Tools**: Features predefined Makefile commands (`make local`, `make testing`, `make development`, `make staging`, `make production`, `make serve`, `make assets`, `make transpile`) for tasks such as linting, building, serving, and optimizing assets, facilitating a smooth development workflow.
 - **Scalable Project Structure**: The template is structured for scalability, accommodating a wide range of React projects, from single-page applications to complex web applications with multiple routes and components.
 - **Dotfiles**: Comes with essential configuration files (.gitignore, .editorconfig, .gitattributes, .prettierignore) pre-set to maintain a clean and consistent coding environment across various platforms and editors, ensuring smooth collaboration and integration.
