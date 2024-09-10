@@ -17,6 +17,6 @@
  * - Web: https://premierstacks.com
  */
 
-import { configs } from '@premierstacks/eslint-stack';
+import { ignores, reactTs, configs } from '@premierstacks/eslint-stack';
 
-export default [...configs.ignores(), ...configs.reactTs(), ...configs.configs()];
+export default [...ignores(), ...reactTs(), ...configs()];

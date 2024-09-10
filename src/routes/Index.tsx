@@ -17,8 +17,6 @@
  * - Web: https://premierstacks.com
  */
 
-function Index() {
+export function Index() {
   return <div>Index</div>;
 }
-
-export { Index };

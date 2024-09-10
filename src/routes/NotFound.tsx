@@ -17,8 +17,6 @@
  * - Web: https://premierstacks.com
  */
 
-function NotFound() {
+export function NotFound() {
   return <div>NotFound</div>;
 }
-
-export { NotFound };

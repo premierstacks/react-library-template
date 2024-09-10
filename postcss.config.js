@@ -17,6 +17,6 @@
  * - Web: https://premierstacks.com
  */
 
-import { configs } from '@premierstacks/postcss-stack';
+import { recommended } from '@premierstacks/postcss-stack';
 
-export default configs.recommended();
+export default recommended();

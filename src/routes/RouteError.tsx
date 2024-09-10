@@ -17,8 +17,6 @@
  * - Web: https://premierstacks.com
  */
 
-function RouteError() {
+export function RouteError() {
   return <div>RouteError</div>;
 }
-
-export { RouteError };

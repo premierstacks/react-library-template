@@ -17,14 +17,14 @@
  * - Web: https://premierstacks.com
  */
 
-import { configs } from '@premierstacks/webpack-stack';
+import { reactTs, chunks, html, copy } from '@premierstacks/webpack-stack';
 
 export default function (env, argv) {
-  const config = configs.reactTs(env, argv, ['./src/index.tsx', './src/index.scss']);
+  const config = reactTs(env, argv, ['./src/index.tsx', './src/index.scss']);
 
-  configs.chunks(env, argv, config);
-  configs.html(env, argv, config, './src/index.html', 'index.html', true);
-  configs.copy(env, argv, config, './public', '.');
+  chunks(env, argv, config);
+  html(env, argv, config, './src/index.html', 'index.html', true);
+  copy(env, argv, config, './public', '.');
 
   return config;
 }

@@ -17,6 +17,6 @@
  * - Web: https://premierstacks.com
  */
 
-import { configs } from '@premierstacks/stylelint-stack';
+import { recommended } from '@premierstacks/stylelint-stack';
 
-export default configs.recommended();
+export default recommended();
