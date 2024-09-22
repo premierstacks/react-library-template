@@ -2,76 +2,110 @@
 SHELL := /bin/bash
 
 # Default goal
-.DEFAULT_GOAL := panic
+.DEFAULT_GOAL := never
 
 # Goals
+.PHONY: audit
+audit: audit_npm
+
+.PHONY: audit_npm
+audit_npm: ./package-lock.json
+	npm audit --audit-level info --include prod --include dev --include peer --include optional
+
 .PHONY: check
 check: lint stan audit
 
-.PHONY: audit
-audit: ./node_modules ./package-lock.json
-	npm audit --audit-level info --include prod --include dev --include peer --include optional
-
-.PHONY: stan
-stan: ./node_modules/.bin/tsc
-	./node_modules/.bin/tsc --noEmit
-
-.PHONY: lint
-lint: ./node_modules/.bin/prettier ./node_modules/.bin/eslint ./node_modules/.bin/stylelint
-	./node_modules/.bin/prettier -c .
-	./node_modules/.bin/eslint .
-	./node_modules/.bin/stylelint ./**/*.{scss,css}
-
-.PHONY: fix
-fix: ./node_modules/.bin/prettier ./node_modules/.bin/eslint ./node_modules/.bin/stylelint
-	./node_modules/.bin/prettier -w .
-	./node_modules/.bin/eslint --fix .
-	./node_modules/.bin/stylelint --fix ./**/*.{scss,css}
-
 .PHONY: clean
 clean:
-	rm -rf ./node_modules
-	rm -rf ./package-lock.json
-	rm -rf ./dist
+	git clean -xfd ./node_modules ./package-lock.json ./dist
 
-.PHONY: update
-update:
-	npm update --install-links --include prod --include dev --include peer --include optional
-
-.PHONY: assets
-assets: ./node_modules/.bin/svgo
-	./node_modules/.bin/svgo -f ./assets -r --multipass --eol=lf --indent=2 --final-newline
-	./node_modules/.bin/svgo -f ./public -r --multipass --eol=lf --indent=2 --final-newline
-
-.PHONY: serve
-serve: ./node_modules/.bin/webpack-cli
-	./node_modules/.bin/webpack-cli serve --mode=development --node-env=development
-
-.PHONY: transpile
-transpile: ./node_modules/.bin/tsc ./node_modules/.bin/sass
-	./node_modules/.bin/tsc
-	./node_modules/.bin/sass ./src:./dist
-
-# Deploy / Release
-.PHONY: local
-local:
-	npm install --install-links --include prod --include dev --include peer --include optional
-	./node_modules/.bin/webpack-cli build --mode=development --node-env=development
-
-.PHONY: testing
-testing: local
+.PHONY: compress
+compress: ./node_modules/.bin/svgo
+	./node_modules/.bin/svgo -f ./assets -r --multipass --eol=lf --indent=2 --final-newline || true
+	./node_modules/.bin/svgo -f ./public -r --multipass --eol=lf --indent=2 --final-newline || true
 
 .PHONY: development
-development: testing
+development: install webpack-development
 
-.PHONY: staging
-staging:
+.PHONY: distclean
+distclean: clean
+	git clean -xfd
+
+.PHONY: fix
+fix: fix_eslint fix_prettier fix_stylelint
+
+.PHONY: fix_eslint
+fix_eslint: ./node_modules/.bin/eslint
+	./node_modules/.bin/eslint --fix .
+
+.PHONY: fix_prettier
+fix_prettier: ./node_modules/.bin/prettier
+	./node_modules/.bin/prettier -w .
+
+.PHONY: fix_stylelint
+fix_stylelint: ./node_modules/.bin/stylelint
+	./node_modules/.bin/stylelint --fix ./**/*.{scss,css}
+
+.PHONY: install
+install: install-npm
+
+.PHONY: install-npm
+install-npm:
 	npm install --install-links --include prod --include dev --include peer --include optional
-	./node_modules/.bin/webpack-cli build --mode=production --node-env=production
+
+.PHONY: lint
+lint: lint_eslint lint_prettier lint_stylelint
+
+.PHONY: lint_eslint
+lint_eslint: ./node_modules/.bin/eslint
+	./node_modules/.bin/eslint .
+
+.PHONY: lint_prettier
+lint_prettier: ./node_modules/.bin/prettier
+	./node_modules/.bin/prettier -c .
+
+.PHONY: lint_stylelint
+lint_stylelint: ./node_modules/.bin/stylelint
+	./node_modules/.bin/stylelint ./**/*.{scss,css}
+
+.PHONY: local
+local: install webpack-development
 
 .PHONY: production
-production: staging
+production: install webpack-production
+
+.PHONY: staging
+staging: install webpack-production
+
+.PHONY: stan
+stan: stan_tsc
+
+.PHONY: stan_tsc
+stan_tsc: ./node_modules/.bin/tsc
+	./node_modules/.bin/tsc --noEmit
+
+.PHONY: start
+start: ./node_modules/.bin/webpack-cli
+	./node_modules/.bin/webpack-cli serve --mode=development --node-env=development
+
+.PHONY: testing
+testing: install webpack-development
+
+.PHONY: update
+update: update-npm
+
+.PHONY: update-npm
+update-npm:
+	npm update --install-links --include prod --include dev --include peer --include optional
+
+.PHONY: webpack-development
+webpack-development: ./node_modules/.bin/webpack-cli
+	./node_modules/.bin/webpack-cli build --mode=development --node-env=development
+
+.PHONY: webpack-production
+webpack-production: ./node_modules/.bin/webpack-cli
+	./node_modules/.bin/webpack-cli build --mode=production --node-env=production
 
 # Dependencies
-./node_modules ./package-lock.json ./node_modules/.bin/prettier ./node_modules/.bin/eslint ./node_modules/.bin/tsc ./node_modules/.bin/stylelint ./node_modules/.bin/svgo ./node_modules/.bin/webpack-cli:
+./node_modules ./node_modules/.bin/eslint ./node_modules/.bin/prettier ./node_modules/.bin/stylelint ./node_modules/.bin/tsc ./node_modules/.bin/webpack-cli ./package-lock.json:
 	npm install --install-links --include prod --include dev --include peer --include optional

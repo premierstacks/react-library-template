@@ -1,15 +1,15 @@
 {
-  "name": "@premierstacks/react-template",
-  "description": "react template",
+  "name": "@premierstacks/browser-webpack-typescript-react-app-template",
+  "description": "premierstacks browser webpack typescript react app template",
   "keywords": [
     "premierstacks",
-    "react-template",
+    "browser-webpack-typescript-react-app-template",
     "tomchochola"
   ],
-  "homepage": "https://github.com/premierstacks/react-template",
+  "homepage": "https://github.com/premierstacks/browser-webpack-typescript-react-app-template",
   "bugs": {
     "email": "chocholatom1997@gmail.com",
-    "url": "https://github.com/premierstacks/react-template/issues"
+    "url": "https://github.com/premierstacks/browser-webpack-typescript-react-app-template/issues"
   },
   "license": "SEE LICENSE IN ./LICENSE.md",
   "author": {
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/premierstacks/react-template.git"
+    "url": "https://github.com/premierstacks/browser-webpack-typescript-react-app-template.git"
   },
   "devDependencies": {
     "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack",
