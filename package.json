@@ -2,9 +2,9 @@
   "name": "@premierstacks/browser-webpack-typescript-react-app-template",
   "description": "premierstacks browser webpack typescript react app template",
   "keywords": [
+    "tomchochola",
     "premierstacks",
-    "browser-webpack-typescript-react-app-template",
-    "tomchochola"
+    "browser-webpack-typescript-react-app-template"
   ],
   "homepage": "https://github.com/premierstacks/browser-webpack-typescript-react-app-template",
   "bugs": {
