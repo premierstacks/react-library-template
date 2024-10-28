@@ -15,18 +15,18 @@ audit_npm: ./node_modules ./package-lock.json
 .PHONY: check
 check: lint stan audit
 
+.PHONY: clean
+clean:
+	rm -rf ./node_modules
+	rm -rf ./package-lock.json
+	rm -rf ./dist
+
 .PHONY: commit
 commit: fix check compress
 
 .PHONY: compress
 compress: ./node_modules/.bin/svgo $(shell rg --files --hidden --iglob '!.git' --iglob '*.svg')
 	rg --files --hidden --iglob '!.git' --iglob '*.svg' | xargs -n 1 -P 0 ./node_modules/.bin/svgo --multipass --eol=lf --indent=2 --final-newline
-
-.PHONY: clean
-clean:
-	rm -rf ./node_modules
-	rm -rf ./package-lock.json
-	rm -rf ./dist
 
 .PHONY: development
 development: local
@@ -61,6 +61,12 @@ local: ./node_modules/.bin/webpack-cli ./webpack.config.js
 .PHONY: production
 production: staging
 
+.PHONY: serve
+serve: start
+
+.PHONY: server
+server: start
+
 .PHONY: staging
 staging: ./node_modules/.bin/webpack-cli ./webpack.config.js
 	rm -rf ./dist
@@ -72,12 +78,6 @@ stan: stan_tsc
 .PHONY: stan_tsc
 stan_tsc: ./node_modules/.bin/tsc ./tsconfig.json
 	./node_modules/.bin/tsc --noEmit
-
-.PHONY: serve
-serve: start
-
-.PHONY: server
-server: start
 
 .PHONY: start
 start: ./node_modules/.bin/webpack-cli ./webpack.config.js
