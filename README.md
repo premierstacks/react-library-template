@@ -85,7 +85,7 @@ Use the `Use this template` button on the GitHub repository page to create a new
 Or clone the repository using the following command:
 
 ```bash
-git clone https://github.com/premierstacks/browser-webpack-typescript-app-template.git browser-webpack-typescript-app
+git clone https://github.com/premierstacks/browser-webpack-typescript-react-app-template.git
 ```
 
 **4. Customize Your Project**
@@ -123,7 +123,6 @@ make check
 
 # clean up the project
 make clean
-make distclean
 
 # run before every commit
 make commit

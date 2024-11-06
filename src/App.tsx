@@ -1,25 +1,10 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Index } from './routes/Index';
-import { NotFound } from './routes/NotFound';
-import { RouteError } from './routes/RouteError';
+import { FC, ReactNode } from 'react';
+import { Router } from './Router';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Index />,
-    errorElement: <RouteError />,
-  },
-  {
-    path: '*',
-    element: <NotFound />,
-    errorElement: <RouteError />,
-  },
-]);
-
-export function App() {
+export const App: FC = (): ReactNode => {
   return (
     <div>
-      <RouterProvider router={router} />
+      <Router />
     </div>
   );
-}
+};
