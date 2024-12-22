@@ -1,10 +1,11 @@
 import { FC, ReactNode } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router';
 
 export const RootRoute: FC = (): ReactNode => {
   return (
-    <div>
+    <>
+      <ScrollRestoration />
       <Outlet />
-    </div>
+    </>
   );
 };

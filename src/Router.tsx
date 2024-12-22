@@ -23,11 +23,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: '*',
-    element: <NotFoundRoute />,
-    errorElement: <ErrorRoute />,
-  },
 ]);
 
 export const Router: FC = (): ReactNode => {

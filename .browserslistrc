@@ -1,11 +1,11 @@
 [production]
-chrome > 0 and last 1 year
-edge > 0 and last 1 year
-firefox > 0 and last 1 year
-safari > 0 and last 1 year
-and_chr > 0 and last 1 year
-and_ff > 0 and last 1 year
-ios_saf > 0 and last 1 year
+last 1 chrome version
+last 1 edge version
+last 1 firefox version
+last 1 safari version
+last 1 and_chr version
+last 1 and_ff version
+last 1 ios_saf version
 
 [development]
 last 1 chrome version

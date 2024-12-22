@@ -41,10 +41,9 @@
     "@premierstacks/webpack-stack": "github:premierstacks/webpack-stack",
     "@types/react": "^18.3",
     "@types/react-dom": "^18.3",
-    "@types/react-router-dom": "^5.3",
     "react": "^18.3",
     "react-dom": "^18.3",
-    "react-router-dom": "^6.26"
+    "react-router": "^7.0"
   },
   "private": true,
   "type": "module"
