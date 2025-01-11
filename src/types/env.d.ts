@@ -4,6 +4,6 @@ declare namespace WebpackDefinePlugin {
   }
 }
 
-declare let process: {
+declare const process: {
   env: WebpackDefinePlugin.ProcessEnv;
 };

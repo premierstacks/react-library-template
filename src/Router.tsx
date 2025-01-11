@@ -1,5 +1,5 @@
-import { FC, ReactNode } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import type { FC, ReactNode } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import { ErrorRoute } from './routes/ErrorRoute';
 import { IndexRoute } from './routes/IndexRoute';
 import { NotFoundRoute } from './routes/NotFoundRoute';

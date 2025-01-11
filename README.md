@@ -1,72 +1,68 @@
 # [Browser Webpack TypeScript React App Template](https://github.com/premierstacks/browser-webpack-typescript-react-app-template) by [Tomáš Chochola](https://github.com/tomchochola)
 
-✨ _**Clone and Win!**_
-
 The Browser Webpack TypeScript React App Template offers a complete foundation for developing modern browser-based applications with TypeScript, React, and Webpack. Featuring pre-configured setups for React components, TypeScript, and asset optimization, this template streamlines your development workflow while ensuring clean and maintainable code. It’s designed to help developers start coding quickly with all the necessary tools integrated, including ESLint, Prettier, and Stylelint for code quality and consistency.
-
-## What is Browser Webpack TypeScript React App Template?
-
-The Browser Webpack TypeScript React App Template is a carefully designed template that accelerates frontend development by providing a pre-configured environment for building React applications with TypeScript. It leverages Webpack to handle bundling, transpilation, and asset management, making it a powerful starting point for creating efficient and scalable browser applications.
-
-This template comes with built-in configurations for TypeScript, ensuring seamless compilation of JSX and TSX files, and it fully integrates ESLint for React and TypeScript linting, Prettier for automatic code formatting, and Stylelint for enforcing CSS and SCSS styling standards. Additionally, it supports Webpack plugins for optimizing HTML, CSS, images, and other assets, helping maintain high performance and streamlined workflows.
-
-With support for Webpack DevServer and hot module replacement, you can create a smooth development experience, minimizing downtime and speeding up iterations. The template also includes a Makefile that simplifies command-line operations, from starting the development server to running code checks and preparing for production deployment.
-
-## What is Tomchochola
-
-[https://gitub.com/tomchochola](https://gitub.com/tomchochola)
-
-This is my personal GitHub profile, where you’ll find public documentation and sample repositories for proprietary packages and templates from Premierstacks. These public repositories are designed to give you an overview of the best practices and high-quality code I follow in all my projects.
 
 ## What is Premierstacks
 
-[https://gitub.com/premierstacks](https://gitub.com/premierstacks)
+[GitHub Organization → /premierstacks](https://github.com/premierstacks)
 
-Premierstacks is a collection of exclusive, proprietary stacks and templates for PHP, JavaScript, TypeScript, React, and Laravel. It was created to address the common pain points developers face with many open-source projects—quality, consistency, and maintainability. With Premierstacks, you get high-quality tools built with strict attention to detail, designed to help you build and maintain better projects, faster.
+Premierstacks is a premier organization delivering a complete ecosystem of libraries, packages, and templates for full-stack web development. It provides end-to-end solutions for backend systems, APIs, and frontend interfaces built on PHP, Laravel, TypeScript, React, and Material Design 3.
 
-## Why Premierstacks?
+Beyond code, Premierstacks focuses on creating a seamless development experience, offering support tools for planning, architecture, deployment, and long-term project maintenance. Each resource within the ecosystem is crafted with precision, adhering to strict quality standards, and designed to scale effortlessly.
 
-I created Premierstacks because I wasn’t satisfied with the quality of many open-source projects. Maintaining high-quality code and ensuring long-term reliability is challenging when you’re not earning from the product. When you pay for something, it means the creator truly cares about its success and is committed to delivering the best possible outcome.
+From initial project planning and logical architecture to seamless development workflows and optimized production deployment, Premierstacks delivers tools engineered for excellence across every stage of the software lifecycle.
 
-Like Apple’s approach with their closed ecosystem, I believe that true excellence can only be achieved when every detail is under your control. That’s why Premierstacks is proprietary software—it's not just about providing solutions; it’s about ensuring those solutions meet the highest standards.
+## Why Premierstacks
 
-### Why You Should Choose Premierstacks
+Premierstacks exists to solve the recurring challenges of modern software development: inconsistency, poor maintainability, and fragmented tooling. It offers a complete ecosystem of libraries, templates, and supporting tools, designed to streamline workflows, enforce best practices, and ensure long-term reliability.
 
-**🚀 Unmatched Quality**
+Every component in Premierstacks is crafted with precision, following strict quality standards. From backend logic to frontend interfaces and infrastructure tooling, the focus remains on delivering scalable, future-proof, and seamless solutions. With Premierstacks, development becomes faster, cleaner, and more consistent—right from the first line of code to final deployment.
 
-Our solutions adhere to the highest standards, ensuring clean and maintainable code.
+## What is Tomchochola
 
-**⚙️ No Setup Hassles**
+[GitHub Personal → /tomchochola](https://github.com/tomchochola)
 
-Pre-configured environments let you start coding immediately—no more complex setups.
+The Tomchochola GitHub profile features a range of public and private repositories, including experimental tools, independent projects, and legacy systems. These repositories often represent unique solutions that exist outside the strict quality and structural guidelines of Premierstacks.
 
-**📦 Reuse Across Projects**
+Here, you’ll find codebases that may belong to different ecosystems, technologies, or experimental workflows. Some projects serve specific use cases, while others are standalone solutions or serve as proof-of-concept prototypes. This profile is a playground for ideas, tools, and resources that might not fully align with the long-term goals of Premierstacks but still offer value and insight into various aspects of software development.
 
-Each library and template is built to be reusable, reducing long-term maintenance.
+## About the Creator
 
-**🔒 Exclusive Resources**
+Tomáš Chochola is a software architect, technical leader, and creator of the Premierstacks ecosystem. With years of experience in backend and frontend development, cloud infrastructure, and team management, he has established a reputation for delivering scalable, maintainable, and robust software solutions.
 
-Premierstacks offers tools you won’t find in typical open-source collections.
+His expertise spans backend systems built on PHP and Laravel, frontend interfaces designed with React and Material Design 3, and efficient workflows powered by modern tooling and infrastructure solutions.
 
-**🛠️ Always Up-to-Date**
+### Specializations
 
-Receive continuous updates and new features, keeping your projects current.
+**Backend Development:** PHP, Laravel, JSON:API<br />
+**Frontend Development:** TypeScript, React, Material Design 3<br />
+**Tooling:** ESLint, Prettier, Webpack, PHPStan, PHP CS Fixer, Stylelint<br />
 
-**💪 Expert Creators**
+## Support the Creator
 
-Developed by experienced professionals dedicated to quality and excellence.
+**[GitHub Sponsors -> /sponsors/tomchochola](https://github.com/sponsors/tomchochola)**
+
+Premierstacks is now freely available under the Creative Commons BY-ND 4.0 license, offering high-quality tools, libraries, and templates to the developer community. While the ecosystem remains open and accessible, its growth, updates, and ongoing maintenance depend on individual support.
+
+By sponsoring Tomáš Chochola on GitHub Sponsors, you directly contribute to the continued development, improvement, and long-term sustainability of Premierstacks. Every contribution supports the creation of reliable, scalable, and future-proof solutions for developers worldwide.
+
+Your support makes a difference—thank you for being a part of this journey.
 
 ## License
 
-**© 2024–Present Tomáš Chochola <chocholatom1997@gmail.com>. All rights reserved.**
+**Creative Commons Attribution-NoDerivatives 4.0 International**
 
-This software is proprietary and licensed under specific terms set by its owner.<br />
-Any form of access, use, or distribution requires a valid and active license.<br />
-For full licensing terms, refer to the LICENSE.md file accompanying this software.<br />
+**Copyright © 2025, Tomáš Chochola <chocholatom1997@gmail.com>. Some rights reserved.**
 
-**Purchase a license here: [Github Sponsors](https://github.com/sponsors/tomchochola)**
+This license requires that reusers give credit to the creator. It allows reusers to copy and distribute the material in any medium or format in unadapted form only, even for commercial purposes.
 
-**See full terms here: [/LICENSE.md](/LICENSE.md)**
+### Creative Commons License for Software?
+
+The Creative Commons BY-ND 4.0 license is perfectly suited to Premierstacks. It offers developers the freedom to integrate the software into their projects while preserving the original author’s vision and ensuring consistency across the ecosystem.
+
+Dynamic linking and object-oriented programming practices, such as inheritance or method overriding, are fully permitted. This enables seamless adaptation of the software in dynamic contexts without violating the license. However, static linking, forks, or modifications that alter the software’s original form are prohibited to maintain its integrity and prevent the creation of fragmented or subpar versions.
+
+By protecting the core quality and unity of Premierstacks, this license ensures that developers can confidently rely on it as a trusted, high-standard solution for their projects.
 
 ## Getting Started
 
@@ -74,25 +70,15 @@ For full licensing terms, refer to the LICENSE.md file accompanying this softwar
 
 Ensure this package fits your needs and that you agree with the terms.
 
-**2. Obtain a license**
-
-**Purchase a license here: [Github Sponsors](https://github.com/sponsors/tomchochola)**
-
-**3. Project Creation**
+**2. Project Creation**
 
 Use the `Use this template` button on the GitHub repository page to create a new repository from this template.
 
-Or clone the repository using the following command:
-
-```bash
-git clone https://github.com/premierstacks/browser-webpack-typescript-react-app-template.git
-```
-
-**4. Customize Your Project**
+**3. Customize Your Project**
 
 Explore the generated repository, remove unnecessary components and adjust it to fit your project's needs.
 
-**5. CLI**
+**4. CLI**
 
 Available make commands:
 
@@ -123,34 +109,11 @@ make check
 
 # clean up the project
 make clean
-
-# run before every commit
-make commit
-
-# images/assets compression
-make compress
 ```
-
-## About the Creator
-
-I'm Tomáš Chochola, a software developer dedicated to creating exclusive, enterprise-grade software solutions. I specialize in building packages and templates for PHP, JavaScript, and TypeScript, tailored to streamline development workflows, enforce best practices, and save you time.
-
-My mission is to develop reusable solutions that enhance code quality, boost productivity, and ensure that projects remain maintainable and scalable over the long term.
-
-### Specializations
-
-**Backend Development:** Expert in PHP and Laravel<br />
-**Frontend Development:** Mastery in TypeScript, React, and JavaScript<br />
-**DevOps:** Proficient in managing Ubuntu and AWS environments<br />
-**Security:** Focused on implementing best practices and enforcing code standards<br />
-**Tooling:** Extensive experience with ESLint, Prettier, PHP CS Fixer, Stylelint, and PHPStan<br />
-**Reusable Solutions:** Creating templates and configuration stacks for optimized development<br />
-**Development Environments:** Fluent in Windows 11 and Ubuntu (WSL2)<br />
 
 ## Contact
 
 **📧 Email: <chocholatom1997@gmail.com>**<br />
-**💻 Website: [https://premierstacks.com](https://premierstacks.com)**<br />
 **👨 GitHub Personal: [https://github.com/tomchochola](https://github.com/tomchochola)**<br />
 **🏢 GitHub Organization: [https://github.com/premierstacks](https://github.com/premierstacks)**<br />
 **💰 GitHub Sponsors: [https://github.com/sponsors/tomchochola](https://github.com/sponsors/tomchochola)**<br />
