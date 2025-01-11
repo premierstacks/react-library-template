@@ -124,37 +124,43 @@ The following is a breakdown of the folder and file structure within this reposi
 
 ```bash
 .
+├── AUTHORS.md
 ├── .browserslistrc
 ├── .editorconfig
+├── eslint.config.js
 ├── .gitattributes
 ├── .gitignore
-├── .prettierignore
-├── .stylelintignore
-├── AUTHORS.md
-├── LICENSE.md
+├── LICENSE
 ├── Makefile
-├── README.md
-├── assets
-│   └── favicon.ico
-├── eslint.config.js
 ├── package.json
 ├── postcss.config.js
 ├── prettier.config.js
+├── .prettierignore
 ├── public
+│   ├── apple-touch-icon.png
+│   ├── favicon.ico
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
 │   └── robots.txt
+├── README.md
 ├── src
 │   ├── App.tsx
 │   ├── index.html
 │   ├── index.scss
 │   ├── index.tsx
-│   ├── modules.d.ts
-│   └── routes
-│       ├── Index.tsx
-│       ├── NotFound.tsx
-│       └── RouteError.tsx
+│   ├── Router.tsx
+│   ├── routes
+│   │   ├── ErrorRoute.tsx
+│   │   ├── IndexRoute.tsx
+│   │   ├── NotFoundRoute.tsx
+│   │   └── RootRoute.tsx
+│   └── types
+│       ├── env.d.ts
+│       └── modules.d.ts
 ├── stylelint.config.js
+├── .stylelintignore
 ├── tsconfig.json
 └── webpack.config.js
 
-4 directories, 27 files
+5 directories, 33 files
 ```
