@@ -1,9 +1,7 @@
-declare namespace WebpackDefinePlugin {
-  interface ProcessEnv {
-    API_DNS: string;
-  }
-}
-
 declare const process: {
-  env: WebpackDefinePlugin.ProcessEnv;
+  env: {
+    NODE_ENV: string;
+    WEBPACK_MODE: string;
+    APP_ENV: string;
+  };
 };
