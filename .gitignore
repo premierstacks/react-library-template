@@ -11,3 +11,6 @@
 
 # compiled files
 /dist
+
+# playwright
+/test-results

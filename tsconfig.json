@@ -1,6 +1,6 @@
 {
   "extends": "@premierstacks/typescript-stack/src/configs/browser_webpack_react_app.json",
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./tests/**/*"],
   "compilerOptions": {
     "outDir": "./dist"
   }

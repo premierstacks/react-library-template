@@ -4,7 +4,10 @@ import { Link } from 'react-aria-components';
 export const NotFoundRoute: FC = (): ReactNode => {
   return (
     <main>
-      <Link href="/">Return back</Link>
+      <div>NotFoundRoute</div>
+      <nav>
+        <Link href="/">Home</Link>
+      </nav>
     </main>
   );
 };

@@ -9,17 +9,7 @@ export default async function (env, argv) {
   const appEnv = getAppEnv(env, argv);
 
   config.entry = {
-    index: [
-      'sanitize.css/assets.css',
-      'sanitize.css/forms.css',
-      'sanitize.css/reduce-motion.css',
-      'sanitize.css/sanitize.css',
-      'sanitize.css/system-ui.css',
-      'sanitize.css/typography.css',
-      'sanitize.css/ui-monospace.css',
-      './src/index.tsx',
-      './src/index.scss',
-    ],
+    index: './src/index.ts',
   };
 
   config.plugins.push(
@@ -30,7 +20,7 @@ export default async function (env, argv) {
     }),
   );
 
-  html(env, argv, config, { inject: true, template: './src/index.html', filename: 'index.html', chunks: ['index'] });
+  html(env, argv, config, { inject: true, template: './src/index.html', filename: 'index.html', chunks: ['index'], publicPath: '/' });
   copy(env, argv, config, { patterns: [{ from: './public', to: '.' }] });
 
   return config;

@@ -3,10 +3,13 @@ import { Link } from 'react-aria-components';
 
 export const IndexRoute: FC = (): ReactNode => {
   return (
-    <main style={{ display: 'flex', flexDirection: 'column' }}>
-      <Link href="/premierstacks">Premierstacks</Link>
-      <Link href="/about">About</Link>
-      <Link href="/contact">Contact</Link>
+    <main>
+      <div>IndexRoute</div>
+      <nav>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/contact">Contact</Link>
+      </nav>
     </main>
   );
 };
