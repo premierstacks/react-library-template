@@ -8,4 +8,6 @@ import 'sanitize.css/ui-monospace.css';
 
 import './index.scss';
 
+import './observability';
+
 void import('./bootstrap');

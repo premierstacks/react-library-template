@@ -3,5 +3,7 @@ declare const process: {
     NODE_ENV: string;
     WEBPACK_MODE: string;
     APP_ENV: string;
+    APP_VERSION: string;
+    APP_NAME: string;
   };
 };
