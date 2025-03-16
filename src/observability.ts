@@ -12,7 +12,7 @@ import { BatchLogRecordProcessor, LoggerProvider } from '@opentelemetry/sdk-logs
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION, ATTR_USER_AGENT_ORIGINAL } from '@opentelemetry/semantic-conventions';
+import { ATTR_EXCEPTION_MESSAGE, ATTR_EXCEPTION_STACKTRACE, ATTR_EXCEPTION_TYPE, ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION, ATTR_USER_AGENT_ORIGINAL } from '@opentelemetry/semantic-conventions';
 import { ATTR_BROWSER_LANGUAGE, ATTR_DEPLOYMENT_ENVIRONMENT_NAME } from '@opentelemetry/semantic-conventions/incubating';
 import { onCLS, onFCP, onINP, onLCP, onTTFB, type Metric } from 'web-vitals';
 
@@ -74,7 +74,7 @@ const lcpRecorder = meter.createHistogram('web_vitals.lcp', {
   valueType: ValueType.DOUBLE,
 });
 
-const clsRecorder = meter.createHistogram('web_vitals.cls', {
+const clsRecorder = meter.createGauge('web_vitals.cls', {
   description: 'Cumulative Layout Shift',
   unit: 'score',
   valueType: ValueType.DOUBLE,
@@ -125,4 +125,19 @@ onFCP((metric) => {
 
 onINP((metric) => {
   recordWebVital(inpRecorder, metric);
+});
+
+window.addEventListener('error', (event: ErrorEvent) => {
+  if (event.error instanceof Error) {
+    logs.getLogger('logs').emit({
+      attributes: {
+        [ATTR_EXCEPTION_TYPE]: event.error.name,
+        [ATTR_EXCEPTION_MESSAGE]: event.message,
+        [ATTR_EXCEPTION_STACKTRACE]: event.error.stack,
+      },
+      severityNumber: 17,
+      severityText: 'ERROR',
+      timestamp: Date.now() * 1e6,
+    });
+  }
 });
