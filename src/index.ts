@@ -10,4 +10,4 @@ import './index.scss';
 
 import './observability';
 
-void import('./bootstrap');
+import './bootstrap';

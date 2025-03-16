@@ -27,7 +27,7 @@ export default async function (env, argv) {
   );
 
   config.plugins.push(
-    new webpack.ProvidePlugin({
+    new webpack.DefinePlugin({
       global: 'globalThis',
     }),
   );
