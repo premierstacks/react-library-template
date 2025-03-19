@@ -22,7 +22,7 @@ const resource = Resource.default().merge(
     [ATTR_SERVICE_VERSION]: process.env.APP_VERSION,
     [ATTR_BROWSER_LANGUAGE]: navigator.language,
     [ATTR_USER_AGENT_ORIGINAL]: navigator.userAgent,
-    [ATTR_DEPLOYMENT_ENVIRONMENT_NAME]: process.env.APP_ENV,
+    [ATTR_DEPLOYMENT_ENVIRONMENT_NAME]: process.env.WEBPACK_MODE,
   }),
 );
 
@@ -134,6 +134,15 @@ window.addEventListener('error', (event: ErrorEvent) => {
         [ATTR_EXCEPTION_TYPE]: event.error.name,
         [ATTR_EXCEPTION_MESSAGE]: event.message,
         [ATTR_EXCEPTION_STACKTRACE]: event.error.stack,
+      },
+      severityNumber: 17,
+      severityText: 'ERROR',
+      timestamp: Date.now() * 1e6,
+    });
+  } else {
+    logs.getLogger('logs').emit({
+      attributes: {
+        [ATTR_EXCEPTION_MESSAGE]: event.message,
       },
       severityNumber: 17,
       severityText: 'ERROR',
