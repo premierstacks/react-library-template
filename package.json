@@ -78,7 +78,7 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier -c .",
-    "local": "npm run clean && npm run npm:install && npm run webpack:build:development",
+    "local": "npm run npm:install && npm run webpack:build:development",
     "npm:audit": "npm audit --audit-level info --include prod --include dev --include peer --include optional",
     "npm:install": "npm install --install-links --include prod --include dev --include peer --include optional",
     "npm:update": "npm update --install-links --include prod --include dev --include peer --include optional",
