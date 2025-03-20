@@ -11,3 +11,6 @@ COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./nginx/conf.d/* /etc/nginx/conf.d
 COPY ./nginx/snippets /etc/nginx/snippets
 COPY ./nginx/mime.types /etc/nginx/mime.types
+USER 0
+RUN chown -R 101:0 /etc/nginx && chmod -R g+w /etc/nginx
+USER 101
