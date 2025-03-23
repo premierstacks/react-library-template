@@ -5,12 +5,11 @@ RUN npm run npm:install
 COPY . .
 RUN npm run webpack:build:production
 
-FROM nginxinc/nginx-unprivileged:mainline-alpine
+FROM nginxinc/nginx-unprivileged:mainline
+ENV NGINX_ENTRYPOINT_LOCAL_RESOLVERS=1
+ENV NGINX_ENTRYPOINT_WORKER_PROCESSES_AUTOTUNE=1
+ENV NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
+ENV NGINX_ROOT=/usr/share/nginx/html
+COPY ./docker/nginx /etc/nginx/templates
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./nginx/conf.d/* /etc/nginx/conf.d
-COPY ./nginx/snippets /etc/nginx/snippets
-COPY ./nginx/mime.types /etc/nginx/mime.types
-USER 0
-RUN chown -R 101:0 /etc/nginx && chmod -R g+w /etc/nginx
-USER 101
+COPY ./docker/entrypoint/* /docker-entrypoint.d

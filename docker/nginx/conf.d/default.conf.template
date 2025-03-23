@@ -1,13 +1,14 @@
 server {
-  listen 8080 default_server backlog=1024;
-  listen [::]:8080 default_server backlog=1024;
+  listen 8080 default_server backlog=1024 reuseport;
+  listen [::]:8080 default_server backlog=1024 reuseport;
 
-  server_name "";
+  server_name _ "";
 
-  root /usr/share/nginx/html;
+  root $NGINX_ROOT;
 
   include /etc/nginx/snippets/add_header_security_headers.conf;
   expires epoch;
+  add_header Cache-Control "public";
   add_header Vary "Accept-Encoding";
 
   if ($request_method !~ ^(GET)$) {
@@ -15,13 +16,13 @@ server {
   }
 
   location / {
-    try_files $uri /index.html;
+    try_files $uri $uri/ /index.html;
   }
 
   location ~* ^/immutable\. {
     include /etc/nginx/snippets/add_header_security_headers.conf;
-    expires max;
-    add_header Cache-Control "immutable";
+    expires 1y;
+    add_header Cache-Control "public, immutable";
     add_header Vary "Accept-Encoding";
   }
 

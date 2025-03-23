@@ -12,3 +12,5 @@ client_header_timeout 5s;
 keepalive_requests 1000;
 keepalive_time 1h;
 keepalive_timeout 10s;
+
+resolver_timeout 5s;
