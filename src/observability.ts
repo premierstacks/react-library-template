@@ -14,6 +14,7 @@ import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { ATTR_EXCEPTION_MESSAGE, ATTR_EXCEPTION_STACKTRACE, ATTR_EXCEPTION_TYPE, ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION, ATTR_USER_AGENT_ORIGINAL } from '@opentelemetry/semantic-conventions';
 import { ATTR_BROWSER_LANGUAGE, ATTR_DEPLOYMENT_ENVIRONMENT_NAME } from '@opentelemetry/semantic-conventions/incubating';
+import type { ErrorInfo } from 'react';
 import { onCLS, onFCP, onINP, onLCP, onTTFB, type Metric } from 'web-vitals';
 
 const resource = Resource.default().merge(
@@ -23,12 +24,20 @@ const resource = Resource.default().merge(
     [ATTR_BROWSER_LANGUAGE]: navigator.language,
     [ATTR_USER_AGENT_ORIGINAL]: navigator.userAgent,
     [ATTR_DEPLOYMENT_ENVIRONMENT_NAME]: process.env.WEBPACK_MODE,
+    'http.origin': location.origin,
+    'api.key': process.env.OTLP_API_KEY ?? undefined,
   }),
 );
 
 const tracerProvider = new WebTracerProvider({
   resource: resource,
-  spanProcessors: [new BatchSpanProcessor(new OTLPTraceExporter())],
+  spanProcessors: [
+    new BatchSpanProcessor(
+      new OTLPTraceExporter({
+        url: location.origin + '/otlp/v1/traces',
+      }),
+    ),
+  ],
 });
 
 tracerProvider.register({
@@ -44,7 +53,9 @@ const meterProvider = new MeterProvider({
   resource: resource,
   readers: [
     new PeriodicExportingMetricReader({
-      exporter: new OTLPMetricExporter(),
+      exporter: new OTLPMetricExporter({
+        url: location.origin + '/otlp/v1/metrics',
+      }),
     }),
   ],
 });
@@ -55,7 +66,13 @@ const loggerProvider = new LoggerProvider({
   resource: resource,
 });
 
-loggerProvider.addLogRecordProcessor(new BatchLogRecordProcessor(new OTLPLogExporter()));
+loggerProvider.addLogRecordProcessor(
+  new BatchLogRecordProcessor(
+    new OTLPLogExporter({
+      url: location.origin + '/otlp/v1/logs',
+    }),
+  ),
+);
 
 logs.setGlobalLoggerProvider(loggerProvider);
 
@@ -127,7 +144,38 @@ onINP((metric) => {
   recordWebVital(inpRecorder, metric);
 });
 
+export function observeError(error: unknown, errorInfo?: ErrorInfo) {
+  console.error(error);
+  console.error(errorInfo);
+
+  if (error instanceof Error) {
+    logs.getLogger('logs').emit({
+      attributes: {
+        [ATTR_EXCEPTION_TYPE]: error.name,
+        [ATTR_EXCEPTION_MESSAGE]: error.message,
+        [ATTR_EXCEPTION_STACKTRACE]: error.stack,
+      },
+      severityNumber: 17,
+      severityText: 'ERROR',
+      timestamp: Date.now() * 1e6,
+    });
+  }
+
+  if (typeof error === 'string' || error instanceof String) {
+    logs.getLogger('logs').emit({
+      attributes: {
+        [ATTR_EXCEPTION_MESSAGE]: error.toString(),
+      },
+      severityNumber: 17,
+      severityText: 'ERROR',
+      timestamp: Date.now() * 1e6,
+    });
+  }
+}
+
 window.addEventListener('error', (event: ErrorEvent) => {
+  console.error(event);
+
   if (event.error instanceof Error) {
     logs.getLogger('logs').emit({
       attributes: {

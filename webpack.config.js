@@ -20,6 +20,8 @@ export default async function (env, argv) {
       WEBPACK_MODE: webpackMode,
       APP_NAME: process.env.npm_package_name,
       APP_VERSION: process.env.npm_package_version || execSync('git rev-parse HEAD').toString().trim(),
+      APP_ENV: process.env.APP_ENV || webpackMode,
+      OTLP_API_KEY: process.env.OTLP_API_KEY || null,
     }),
   );
 

@@ -88,6 +88,15 @@ Available commands:
 # provision for local environment
 npm run local
 
+# provision for development environment
+npm run development
+
+# provision for testing environment
+npm run testing
+
+# provision for staging environment
+npm run staging
+
 # provision for production environment
 npm run production
 

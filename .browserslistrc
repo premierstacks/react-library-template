@@ -29,7 +29,7 @@ samsung >= 13
 
 [es2015]
 chrome >= 51
-edge >= 10
+edge >= 15
 firefox >= 54
 safari >= 10
 and_chr >= 51

@@ -4,5 +4,7 @@ declare const process: {
     WEBPACK_MODE: string;
     APP_VERSION: string;
     APP_NAME: string;
+    APP_ENV: string;
+    OTLP_API_KEY: string | null;
   };
 };

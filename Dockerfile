@@ -1,4 +1,4 @@
-FROM node AS build
+FROM node:lts AS build
 WORKDIR /app
 COPY package*.json .
 RUN npm run npm:install
