@@ -1,3 +1,3 @@
-import { recommended } from '@premierstacks/postcss-stack';
+import { createPostcssConfigStylex } from '@premierstacks/postcss-stack';
 
-export default recommended();
+export default createPostcssConfigStylex();

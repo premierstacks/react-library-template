@@ -8,6 +8,8 @@ import 'sanitize.css/ui-monospace.css';
 
 import './index.scss';
 
+import './stylex.css';
+
 document.querySelectorAll('link[rel="preload"][as="style"]').forEach((link) => {
   if (link instanceof HTMLLinkElement) {
     link.rel = 'stylesheet';
@@ -16,4 +18,4 @@ document.querySelectorAll('link[rel="preload"][as="style"]').forEach((link) => {
 
 import './observability';
 
-import './bootstrap';
+void import('./bootstrap');

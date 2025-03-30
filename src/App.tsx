@@ -4,7 +4,7 @@ import { ErrorBoundary } from './errors/ErrorBoundary';
 
 export const App: FC = (): ReactNode => {
   return (
-    <ErrorBoundary assign={new URL('/', location.origin)}>
+    <ErrorBoundary>
       <Router />
     </ErrorBoundary>
   );

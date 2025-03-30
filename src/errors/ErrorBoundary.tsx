@@ -1,10 +1,6 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { observeError } from '../observability';
 
-export class ErrorBoundary extends Component<
-  { children?: ReactNode; fallback?: ReactNode; assign?: URL; replace?: URL; handle?: (error: Error, errorInfo: ErrorInfo) => void },
-  { error?: Error; errorInfo?: ErrorInfo }
-> {
+export class ErrorBoundary extends Component<{ children?: ReactNode; fallback?: ReactNode; assign?: URL; replace?: URL }, { error?: Error; errorInfo?: ErrorInfo }> {
   constructor(props: { children: ReactNode; fallback: ReactNode }) {
     super(props);
 
@@ -14,9 +10,7 @@ export class ErrorBoundary extends Component<
   override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({ error, errorInfo });
 
-    observeError(error, errorInfo);
-
-    this.props.handle?.(error, errorInfo);
+    window.dispatchEvent(new ErrorEvent('error', { error }));
 
     if (this.props.assign !== undefined && this.props.assign.toString() !== location.toString()) {
       location.assign(this.props.assign);

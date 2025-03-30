@@ -14,7 +14,6 @@ import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { ATTR_EXCEPTION_MESSAGE, ATTR_EXCEPTION_STACKTRACE, ATTR_EXCEPTION_TYPE, ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION, ATTR_USER_AGENT_ORIGINAL } from '@opentelemetry/semantic-conventions';
 import { ATTR_BROWSER_LANGUAGE, ATTR_DEPLOYMENT_ENVIRONMENT_NAME } from '@opentelemetry/semantic-conventions/incubating';
-import type { ErrorInfo } from 'react';
 import { onCLS, onFCP, onINP, onLCP, onTTFB, type Metric } from 'web-vitals';
 
 const resource = Resource.default().merge(
@@ -144,57 +143,17 @@ onINP((metric) => {
   recordWebVital(inpRecorder, metric);
 });
 
-export function observeError(error: unknown, errorInfo?: ErrorInfo) {
-  console.error(error);
-  console.error(errorInfo);
-
-  if (error instanceof Error) {
-    logs.getLogger('logs').emit({
-      attributes: {
-        [ATTR_EXCEPTION_TYPE]: error.name,
-        [ATTR_EXCEPTION_MESSAGE]: error.message,
-        [ATTR_EXCEPTION_STACKTRACE]: error.stack,
-      },
-      severityNumber: 17,
-      severityText: 'ERROR',
-      timestamp: Date.now() * 1e6,
-    });
-  }
-
-  if (typeof error === 'string' || error instanceof String) {
-    logs.getLogger('logs').emit({
-      attributes: {
-        [ATTR_EXCEPTION_MESSAGE]: error.toString(),
-      },
-      severityNumber: 17,
-      severityText: 'ERROR',
-      timestamp: Date.now() * 1e6,
-    });
-  }
-}
-
 window.addEventListener('error', (event: ErrorEvent) => {
   console.error(event);
 
-  if (event.error instanceof Error) {
-    logs.getLogger('logs').emit({
-      attributes: {
-        [ATTR_EXCEPTION_TYPE]: event.error.name,
-        [ATTR_EXCEPTION_MESSAGE]: event.message,
-        [ATTR_EXCEPTION_STACKTRACE]: event.error.stack,
-      },
-      severityNumber: 17,
-      severityText: 'ERROR',
-      timestamp: Date.now() * 1e6,
-    });
-  } else {
-    logs.getLogger('logs').emit({
-      attributes: {
-        [ATTR_EXCEPTION_MESSAGE]: event.message,
-      },
-      severityNumber: 17,
-      severityText: 'ERROR',
-      timestamp: Date.now() * 1e6,
-    });
-  }
+  logs.getLogger('logs').emit({
+    attributes: {
+      [ATTR_EXCEPTION_TYPE]: event.error instanceof Error ? event.error.name : undefined,
+      [ATTR_EXCEPTION_MESSAGE]: event.message,
+      [ATTR_EXCEPTION_STACKTRACE]: event.error instanceof Error ? event.error.stack : undefined,
+    },
+    severityNumber: 17,
+    severityText: 'ERROR',
+    timestamp: Date.now() * 1e6,
+  });
 });

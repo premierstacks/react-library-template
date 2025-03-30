@@ -1,17 +1,12 @@
 import { useEffect, type FC, type ReactNode } from 'react';
 import { useAsyncError } from 'react-router';
-import { observeError } from '../observability';
 
-export const AsyncErrorBoundary: FC<{ children?: ReactNode; assign?: URL; replace?: URL; handle?: (error: unknown) => void }> = ({ children, assign, replace, handle }): ReactNode => {
+export const AsyncErrorBoundary: FC<{ children?: ReactNode; assign?: URL; replace?: URL }> = ({ children, assign, replace }): ReactNode => {
   const error = useAsyncError();
 
   useEffect(() => {
-    observeError(error);
+    window.dispatchEvent(new ErrorEvent('error', { error }));
   }, [error]);
-
-  useEffect(() => {
-    handle?.(error);
-  }, [handle, error]);
 
   useEffect(() => {
     if (assign !== undefined && assign.toString() !== location.toString()) {

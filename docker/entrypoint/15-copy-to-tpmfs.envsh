@@ -4,8 +4,8 @@ set -eu
 
 [ -d "/var/www/html" ] || return 0
 [ "${NGINX_ROOT:-}" ] || return 0
-[ "$NGINX_ROOT" != "/var/www/html" ] || return 0
+[ "${NGINX_ROOT}" != "/var/www/html" ] || return 0
 
-cp -a "$NGINX_ROOT/." /var/www/html
+cp -a "${NGINX_ROOT}/." /var/www/html
 
 export NGINX_ROOT=/var/www/html

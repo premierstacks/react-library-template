@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json .
 RUN npm run npm:install
 COPY . .
-RUN npm run webpack:build:production
+RUN npm run production
 
 FROM nginxinc/nginx-unprivileged:mainline
 ENV NGINX_ENTRYPOINT_LOCAL_RESOLVERS=1

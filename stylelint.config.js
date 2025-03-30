@@ -1,3 +1,3 @@
-import { recommended } from '@premierstacks/stylelint-stack';
+import { createStylelintConfigBase } from '@premierstacks/stylelint-stack';
 
-export default recommended();
+export default createStylelintConfigBase();

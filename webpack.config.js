@@ -1,9 +1,9 @@
-import { browserTypescriptReactApp, copy, getNodeEnv, getWebpackMode, html } from '@premierstacks/webpack-stack';
+import { applyWebpackPluginCopy, applyWebpackPluginHtml, createWebpackConfigBrowserTypescriptReactBabelApp, getNodeEnv, getWebpackMode } from '@premierstacks/webpack-stack';
 import { execSync } from 'child_process';
 import webpack from 'webpack';
 
 export default async function (env, argv) {
-  const config = browserTypescriptReactApp(env, argv);
+  const config = createWebpackConfigBrowserTypescriptReactBabelApp(env, argv);
 
   config.devServer.port = 3000;
 
@@ -18,8 +18,8 @@ export default async function (env, argv) {
     new webpack.EnvironmentPlugin({
       NODE_ENV: nodeEnv,
       WEBPACK_MODE: webpackMode,
-      APP_NAME: process.env.npm_package_name,
-      APP_VERSION: process.env.npm_package_version || execSync('git rev-parse HEAD').toString().trim(),
+      APP_NAME: process.env.npm_package_name || 'app',
+      APP_VERSION: process.env.npm_package_version || execSync('git rev-parse HEAD').toString().trim() || 'latest',
       APP_ENV: process.env.APP_ENV || webpackMode,
       OTLP_API_KEY: process.env.OTLP_API_KEY || null,
     }),
@@ -31,8 +31,8 @@ export default async function (env, argv) {
     }),
   );
 
-  html(env, argv, config, { inject: true, template: './src/index.html', filename: 'index.html', chunks: ['index'], publicPath: '/' });
-  copy(env, argv, config, { patterns: [{ from: './public', to: '.' }] });
+  applyWebpackPluginHtml(env, argv, config, { inject: true, template: './src/index.html', filename: 'index.html', chunks: ['index'], publicPath: '/' });
+  applyWebpackPluginCopy(env, argv, config, { patterns: [{ from: './public', to: '.' }] });
 
   return config;
 }

@@ -19,7 +19,7 @@ export const ReactAriaProvider: FC = (): ReactNode => {
 const router = createBrowserRouter([
   {
     element: <ReactAriaProvider />,
-    errorElement: <RouteErrorBoundary assign={new URL('/', location.origin)} />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       {
         path: '/',

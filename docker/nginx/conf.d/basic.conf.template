@@ -12,4 +12,4 @@ default_type application/octet-stream;
 
 index index.html /index.html;
 
-resolver $NGINX_LOCAL_RESOLVERS;
+resolver ${NGINX_LOCAL_RESOLVERS};

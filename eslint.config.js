@@ -1,3 +1,3 @@
-import { browserTypescriptReact, configs, ignores } from '@premierstacks/eslint-stack';
+import { createEslintConfigBrowserTypescriptReact, createEslintIgnorePatterns, createEslintOverridesForConfigs } from '@premierstacks/eslint-stack';
 
-export default [...ignores(['dist', 'test-results']), ...browserTypescriptReact(), ...configs()];
+export default [...createEslintIgnorePatterns(['dist', 'test-results']), ...createEslintConfigBrowserTypescriptReact(), ...createEslintOverridesForConfigs()];
