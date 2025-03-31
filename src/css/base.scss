@@ -1,0 +1,25 @@
+:root {
+  min-height: 100vh;
+}
+
+:root {
+  scrollbar-width: none;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1199px) {
+  :root {
+    scrollbar-width: thin;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    scrollbar-width: auto;
+  }
+}
+
+a,
+a:visited,
+a:active {
+  color: inherit;
+}

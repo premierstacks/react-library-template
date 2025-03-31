@@ -8,7 +8,7 @@ export default async function (env, argv) {
   config.devServer.port = 3000;
 
   config.entry = {
-    index: './src/index.ts',
+    index: ['./src/index.scss', './src/index.ts'],
   };
 
   const webpackMode = getWebpackMode(env, argv);
