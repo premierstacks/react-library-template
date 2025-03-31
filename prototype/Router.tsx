@@ -1,9 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import { RouterProvider as AriaRouterProvider } from 'react-aria';
 import { createBrowserRouter, Outlet, RouterProvider, useHref, useNavigate, type NavigateOptions, type To } from 'react-router';
-import { RouteErrorBoundary } from './errors/RouteErrorBoundary';
 import { IndexRoute } from './routes/IndexRoute';
-import { NotFoundRoute } from './routes/NotFoundRoute';
 import { RootRoute } from './routes/RootRoute';
 
 export const ReactAriaProvider: FC = (): ReactNode => {
@@ -19,7 +17,6 @@ export const ReactAriaProvider: FC = (): ReactNode => {
 const router = createBrowserRouter([
   {
     element: <ReactAriaProvider />,
-    errorElement: <RouteErrorBoundary />,
     children: [
       {
         path: '/',
@@ -28,10 +25,6 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <IndexRoute />,
-          },
-          {
-            path: '*',
-            element: <NotFoundRoute />,
           },
         ],
       },

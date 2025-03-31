@@ -1,16 +1,16 @@
 {
-  "name": "@premierstacks/browser-webpack-typescript-react-app-template",
-  "description": "premierstacks browser webpack typescript react app template",
+  "name": "@premierstacks/browser-webpack-typescript-react-library-template",
+  "description": "premierstacks browser webpack typescript react library template",
   "keywords": [
     "tomchochola",
     "tomaschochola",
     "premierstacks",
-    "browser-webpack-typescript-react-app-template"
+    "browser-webpack-typescript-react-library-template"
   ],
-  "homepage": "https://github.com/premierstacks/browser-webpack-typescript-react-app-template",
+  "homepage": "https://github.com/premierstacks/browser-webpack-typescript-react-library-template",
   "bugs": {
     "email": "chocholatom1997@gmail.com",
-    "url": "https://github.com/premierstacks/browser-webpack-typescript-react-app-template/issues"
+    "url": "https://github.com/premierstacks/browser-webpack-typescript-react-library-template/issues"
   },
   "license": "Apache-2.0",
   "author": {
@@ -29,23 +29,8 @@
     "type": "github",
     "url": "https://github.com/sponsors/tomchochola"
   },
-  "repository": "github:premierstacks/browser-webpack-typescript-react-app-template",
+  "repository": "github:premierstacks/browser-webpack-typescript-react-library-template",
   "dependencies": {
-    "@opentelemetry/api": "^1.9",
-    "@opentelemetry/api-logs": "^0.57",
-    "@opentelemetry/auto-instrumentations-web": "^0.45",
-    "@opentelemetry/context-zone": "^1.30",
-    "@opentelemetry/core": "^1.30",
-    "@opentelemetry/exporter-logs-otlp-http": "^0.57",
-    "@opentelemetry/exporter-metrics-otlp-http": "^0.57",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.57",
-    "@opentelemetry/instrumentation": "^0.57",
-    "@opentelemetry/resources": "^1.30",
-    "@opentelemetry/sdk-logs": "^0.57",
-    "@opentelemetry/sdk-metrics": "^1.30",
-    "@opentelemetry/sdk-trace-base": "^1.30",
-    "@opentelemetry/sdk-trace-web": "^1.30",
-    "@opentelemetry/semantic-conventions": "^1.30",
     "react": "^19.0",
     "react-aria-components": "^1.6",
     "react-dom": "^19.0",
