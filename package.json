@@ -49,6 +49,7 @@
     "@opentelemetry/sdk-trace-base": "^2.0",
     "@opentelemetry/sdk-trace-web": "^2.0",
     "@opentelemetry/semantic-conventions": "^1.30",
+    "@premierstacks/material-design-you-react-aria-stack": "github:premierstacks/material-design-you-react-aria-stack",
     "@stylexjs/stylex": "^0.11",
     "react": "^19.1",
     "react-aria": "^3.38",
