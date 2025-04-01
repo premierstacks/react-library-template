@@ -13,22 +13,38 @@ import { BatchLogRecordProcessor, LoggerProvider } from '@opentelemetry/sdk-logs
 import { MeterProvider, PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { ATTR_ERROR_TYPE, ATTR_EXCEPTION_MESSAGE, ATTR_EXCEPTION_STACKTRACE, ATTR_EXCEPTION_TYPE, ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION, ATTR_URL_FRAGMENT, ATTR_URL_FULL, ATTR_URL_PATH, ATTR_URL_QUERY, ATTR_USER_AGENT_ORIGINAL } from '@opentelemetry/semantic-conventions';
+import {
+  ATTR_ERROR_TYPE,
+  ATTR_EXCEPTION_MESSAGE,
+  ATTR_EXCEPTION_STACKTRACE,
+  ATTR_EXCEPTION_TYPE,
+  ATTR_SERVICE_NAME,
+  ATTR_SERVICE_VERSION,
+  ATTR_URL_FRAGMENT,
+  ATTR_URL_FULL,
+  ATTR_URL_PATH,
+  ATTR_URL_QUERY,
+  ATTR_USER_AGENT_ORIGINAL,
+} from '@opentelemetry/semantic-conventions';
 import { ATTR_DEPLOYMENT_ENVIRONMENT_NAME } from '@opentelemetry/semantic-conventions/incubating';
 import { onCLS, onFCP, onINP, onLCP, onTTFB, type Metric } from 'web-vitals';
 
-const resource = defaultResource().merge(
-  resourceFromAttributes({
-    [ATTR_SERVICE_NAME]: process.env.APP_NAME,
-    [ATTR_SERVICE_VERSION]: process.env.APP_VERSION,
-    [ATTR_DEPLOYMENT_ENVIRONMENT_NAME]: process.env.WEBPACK_MODE,
-    [ATTR_USER_AGENT_ORIGINAL]: navigator.userAgent,
-  }),
-).merge(detectResources({detectors:[browserDetector]}));
+const resource = defaultResource()
+  .merge(
+    resourceFromAttributes({
+      [ATTR_SERVICE_NAME]: process.env.APP_NAME,
+      [ATTR_SERVICE_VERSION]: process.env.APP_VERSION,
+      [ATTR_DEPLOYMENT_ENVIRONMENT_NAME]: process.env.WEBPACK_MODE,
+      [ATTR_USER_AGENT_ORIGINAL]: navigator.userAgent,
+    }),
+  )
+  .merge(detectResources({ detectors: [browserDetector] }));
 
-const headers = process.env.OTLP_API_KEY ? {
-  'Authorization': `Bearer ${process.env.OTLP_API_KEY}`,
-} : undefined;
+const headers = process.env.OTLP_API_KEY
+  ? {
+      Authorization: `Bearer ${process.env.OTLP_API_KEY}`,
+    }
+  : undefined;
 
 const tracerProvider = new WebTracerProvider({
   resource: resource,
@@ -36,7 +52,7 @@ const tracerProvider = new WebTracerProvider({
     new BatchSpanProcessor(
       new OTLPTraceExporter({
         url: location.origin + '/otlp/v1/traces',
-        headers: headers
+        headers: headers,
       }),
     ),
   ],
@@ -57,7 +73,7 @@ const meterProvider = new MeterProvider({
     new PeriodicExportingMetricReader({
       exporter: new OTLPMetricExporter({
         url: location.origin + '/otlp/v1/metrics',
-        headers: headers
+        headers: headers,
       }),
     }),
   ],
