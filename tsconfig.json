@@ -1,7 +1,4 @@
 {
-  "extends": "@premierstacks/typescript-stack/src/browser_webpack_react_app.json",
-  "include": ["./src/**/*", "./prototype/**/*", "./tests/**/*"],
-  "compilerOptions": {
-    "outDir": "./dist"
-  }
+  "extends": "@premierstacks/typescript-stack/src/browser_webpack_babel_react_app.json",
+  "include": ["./src/**/*", "./prototype/**/*", "./tests/**/*"]
 }

@@ -25,6 +25,7 @@
 
 %headline {
   @extend %typography;
+
   line-height: 1.3;
   margin-top: 0.5lh;
   margin-bottom: 0.5lh;
@@ -33,6 +34,7 @@
 body,
 .body {
   @extend %typography;
+
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -40,36 +42,42 @@ body,
 h1,
 .h1 {
   @extend %headline;
+
   font-size: calc(32 / 16 * 1rem);
 }
 
 h2,
 .h2 {
   @extend %headline;
+
   font-size: calc(28 / 16 * 1rem);
 }
 
 h3,
 .h3 {
   @extend %headline;
+
   font-size: calc(25 / 16 * 1rem);
 }
 
 h4,
 .h4 {
   @extend %headline;
+
   font-size: calc(22 / 16 * 1rem);
 }
 
 h5,
 .h5 {
   @extend %headline;
+
   font-size: calc(20 / 16 * 1rem);
 }
 
 h6,
 .h6 {
   @extend %headline;
+
   font-size: calc(18 / 16 * 1rem);
 }
 
@@ -79,7 +87,7 @@ p,
   margin-bottom: 1lh;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (width >= 1200px) {
   body,
   .body {
     font-size: calc(1rem * 1.125);
@@ -116,7 +124,7 @@ p,
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1199px) {
+@media screen and (width >= 600px) and (width <= 1199px) {
   body,
   .body {
     font-size: calc(1rem * 1.0625);

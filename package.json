@@ -31,15 +31,12 @@
   },
   "repository": "github:premierstacks/browser-webpack-typescript-react-library-template",
   "dependencies": {
-    "@internationalized/date": "^3.7",
-    "@internationalized/number": "^3.6",
     "@stylexjs/stylex": "^0.11",
     "react": "^19.1",
     "react-aria": "^3.38",
     "react-aria-components": "^1.7",
     "react-dom": "^19.1",
     "react-router": "^7.4",
-    "react-stately": "^3.36",
     "sanitize.css": "^13.0",
     "web-vitals": "^4.2"
   },
@@ -52,11 +49,16 @@
     "@premierstacks/stylelint-stack": "github:premierstacks/stylelint-stack#semver:^2.0",
     "@premierstacks/typescript-stack": "github:premierstacks/typescript-stack#semver:^2.0",
     "@premierstacks/webpack-stack": "github:premierstacks/webpack-stack#semver:^2.0",
-    "@types/react": "^19.0",
-    "@types/react-dom": "^19.0",
-    "csstype": "^3.1"
+    "@types/react": "^19.1",
+    "@types/react-dom": "^19.1"
   },
   "type": "module",
+  "sideEffects": [
+    "*.sass",
+    "*.scss",
+    "*.css"
+  ],
+  "main": "./src/index.ts",
   "scripts": {
     "check": "npm run lint && npm run stan && npm run test && npm run dependencies",
     "clean": "npm run clean:npm && npm run clean:dist",
@@ -65,12 +67,14 @@
     "commit": "npm run local && npm run fix && npm run check",
     "dependencies": "npm run npm:audit",
     "development": "npm run npm:install && npm run webpack:build:production -- --env APP_ENV=development",
-    "fix": "npm run fix:eslint && npm run fix:prettier",
+    "fix": "npm run fix:eslint && npm run fix:stylelint && npm run fix:prettier",
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier -w .",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "fix:stylelint": "stylelint --fix ./**/*.{sass,scss,css}",
+    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier -c .",
+    "lint:stylelint": "stylelint ./**/*.{sass,scss,css}",
     "local": "npm run npm:install && npm run webpack:build:development -- --env APP_ENV=local",
     "npm:audit": "npm audit --audit-level info --include prod --include dev --include peer --include optional",
     "npm:install": "npm install --install-links --include prod --include dev --include peer --include optional",

@@ -1,9 +1,9 @@
-import { applyWebpackPluginHtml, createWebpackConfigBrowserTypescriptReactBabelApp, getNodeEnv, getWebpackMode } from '@premierstacks/webpack-stack';
+import { applyWebpackPluginHtml, createWebpackConfigBrowserTypescriptBabelReactApp, getNodeEnv, getWebpackMode } from '@premierstacks/webpack-stack';
 import { execSync } from 'child_process';
 import webpack from 'webpack';
 
 export default async function (env, argv) {
-  const config = createWebpackConfigBrowserTypescriptReactBabelApp(env, argv);
+  const config = createWebpackConfigBrowserTypescriptBabelReactApp(env, argv);
 
   config.devServer.port = 3000;
 
