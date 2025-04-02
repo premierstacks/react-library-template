@@ -1,6 +1,7 @@
 import { Surface, useDevice, YouBackgroundPadding, YouCommonLink, YouRectShape, YouSurfacePadding, YouTopAppBar } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
 import { type FC, type ReactNode } from 'react';
+import { useTrans } from '../lang/useTrans';
 
 const styles = stylex.create({
   rect: {
@@ -14,6 +15,7 @@ const styles = stylex.create({
 
 export const IndexRoute: FC = (): ReactNode => {
   const { phone } = useDevice();
+  const trans = useTrans();
 
   return (
     <YouBackgroundPadding right={!phone} bottom={!phone}>
@@ -23,7 +25,7 @@ export const IndexRoute: FC = (): ReactNode => {
           leading={<YouRectShape xstyle={styles.rect} />}
           trailing={
             <YouCommonLink isText href="/host/prihlaseni">
-              Přihlásit se
+              {trans.format('login')}
             </YouCommonLink>
           }
         >
@@ -33,7 +35,7 @@ export const IndexRoute: FC = (): ReactNode => {
       <main>
         <Surface tl tr bl br>
           <YouSurfacePadding top left right bottom xstyle={styles.padding}>
-            IndexRoute
+            {trans.format('index')}
           </YouSurfacePadding>
         </Surface>
       </main>

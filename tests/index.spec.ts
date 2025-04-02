@@ -3,5 +3,5 @@ import { expect, test } from '@playwright/test';
 test('should load the homepage and display the correct content', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/premierstacks\/browser-webpack-typescript-react-app-template/);
-  await expect(page.locator('text=IndexRoute')).toBeVisible();
+  await expect(page.locator('text=Hello world!')).toBeVisible();
 });

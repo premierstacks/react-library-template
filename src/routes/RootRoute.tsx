@@ -14,6 +14,7 @@ import {
 import * as stylex from '@stylexjs/stylex';
 import { type FC, type ReactNode } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router';
+import { useTrans } from '../lang/useTrans';
 
 const styles = stylex.create({
   desktop: {
@@ -26,6 +27,7 @@ const styles = stylex.create({
 
 export const RootRoute: FC = (): ReactNode => {
   const { tablet, phone, desktop } = useDevice();
+  const trans = useTrans();
 
   return (
     <>
@@ -36,19 +38,19 @@ export const RootRoute: FC = (): ReactNode => {
       </div>
       {phone ? (
         <YouNavigationBar isFixed isSurfaceContainer>
-          <NavigationBarLink icon={<YouPillShape />} href="/" text="Domů" />
-          <NavigationBarLink icon={<YouCircleShape />} href="/kontakt" text="Kontakt" />
-          <NavigationBarLink icon={<YouFlowerShape />} href="/onas" text="O nás" />
-          <NavigationBarLink icon={<YouTriangleShape />} href="/profil" text="Profl" />
+          <NavigationBarLink icon={<YouPillShape />} href="/" text={trans.format('link.home')} />
+          <NavigationBarLink icon={<YouCircleShape />} href="/contact" text={trans.format('link.contact')} />
+          <NavigationBarLink icon={<YouFlowerShape />} href="/about" text={trans.format('link.about')} />
+          <NavigationBarLink icon={<YouTriangleShape />} href="/profile" text={trans.format('link.profile')} />
         </YouNavigationBar>
       ) : (
         <YouNavigationRail isFixed isSurfaceContainer>
           <YouBackgroundPadding top bottom>
             <YouNavigationRailItems>
-              <YouNavigationRailLink icon={<YouPillShape />} href="/" text="Domů" />
-              <YouNavigationRailLink icon={<YouCircleShape />} href="/kontakt" text="Kontakt" />
-              <YouNavigationRailLink icon={<YouFlowerShape />} href="/onas" text="O nás" />
-              <YouNavigationRailLink icon={<YouTriangleShape />} href="/profil" text="Profl" />
+              <YouNavigationRailLink icon={<YouPillShape />} href="/" text={trans.format('link.home')} />
+              <YouNavigationRailLink icon={<YouCircleShape />} href="/contact" text={trans.format('link.contact')} />
+              <YouNavigationRailLink icon={<YouFlowerShape />} href="/about" text={trans.format('link.about')} />
+              <YouNavigationRailLink icon={<YouTriangleShape />} href="/profile" text={trans.format('link.profile')} />
             </YouNavigationRailItems>
           </YouBackgroundPadding>
         </YouNavigationRail>
