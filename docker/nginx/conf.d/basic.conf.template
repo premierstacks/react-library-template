@@ -10,6 +10,6 @@ http2 on;
 
 default_type application/octet-stream;
 
-index index.html /index.html;
+index /index.html;
 
 resolver ${NGINX_LOCAL_RESOLVERS};
