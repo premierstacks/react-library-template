@@ -1,5 +1,5 @@
 import { metrics, trace, ValueType, type Gauge, type Histogram } from '@opentelemetry/api';
-import { logs } from '@opentelemetry/api-logs';
+import { logs, SeverityNumber } from '@opentelemetry/api-logs';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
@@ -164,10 +164,12 @@ onINP((metric) => {
   recordWebVital(inpRecorder, metric);
 });
 
+const logger = logs.getLogger('logs');
+
 window.addEventListener('error', (event: ErrorEvent) => {
   console.error(event);
 
-  logs.getLogger('logs').emit({
+  logger.emit({
     attributes: {
       [ATTR_ERROR_TYPE]: '500',
       [ATTR_EXCEPTION_TYPE]: event.error instanceof Error ? event.error.name : undefined,
@@ -178,9 +180,8 @@ window.addEventListener('error', (event: ErrorEvent) => {
       [ATTR_URL_QUERY]: location.search,
       [ATTR_URL_FRAGMENT]: location.hash,
     },
-    severityNumber: 17,
+    severityNumber: SeverityNumber.ERROR,
     severityText: 'ERROR',
-    timestamp: Date.now() * 1e6,
     body: event.message,
   });
 });
