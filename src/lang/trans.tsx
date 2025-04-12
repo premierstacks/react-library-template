@@ -1,37 +1,12 @@
-import { use, useEffect, useState, type FC, type ReactNode } from 'react';
+import { useEffect, useState, type FC, type ReactNode } from 'react';
 import { I18nProvider, useLocale, useLocalizedStringFormatter } from 'react-aria';
+import { usePromise, wrapPromise, type WrappedPromise } from '../promises';
 import type { Strings } from './cs';
 
-const stringsCache = new Map<string, WrappedPromise<Strings>>();
-
-type WrappedPromise<T> = Promise<T> &
-  ({ status: 'pending'; value: undefined; reason: undefined } | { status: 'fulfilled'; value: T; reason: undefined } | { status: 'rejected'; value: undefined; reason: unknown });
-
-function wrapPromise<T>(promise: Promise<T>): WrappedPromise<T> {
-  const wrapped = promise.then(
-    (value: T) => {
-      wrapped.status = 'fulfilled';
-      wrapped.value = value;
-      wrapped.reason = undefined;
-      return value;
-    },
-    (reason: unknown) => {
-      wrapped.status = 'rejected';
-      wrapped.reason = reason;
-      wrapped.value = undefined;
-      throw reason;
-    },
-  ) as WrappedPromise<T>;
-
-  wrapped.status = 'pending';
-  wrapped.value = undefined;
-  wrapped.reason = undefined;
-
-  return wrapped;
-}
+const cache = new Map<string, WrappedPromise<Strings>>();
 
 function getStrings(locale: string): WrappedPromise<Strings> {
-  const cached = stringsCache.get(locale);
+  const cached = cache.get(locale);
 
   if (cached) {
     return cached;
@@ -41,7 +16,7 @@ function getStrings(locale: string): WrappedPromise<Strings> {
     locale === 'cs' ? import('./cs').then((m) => m.default) : locale === 'en' ? import('./en').then((m) => m.default) : Promise.reject(new Error(`Locale ${locale} not found`)),
   );
 
-  stringsCache.set(locale, promise);
+  cache.set(locale, promise);
 
   return promise;
 }
@@ -69,30 +44,13 @@ export function useTrans() {
 
   const promise = getStrings(locale);
 
-  let strings: Strings;
-
-  if (promise.status === 'fulfilled') {
-    strings = promise.value;
-  } else {
-    strings = use(promise);
-  }
-
-  return useLocalizedStringFormatter({ [locale]: strings });
+  return useLocalizedStringFormatter({ [locale]: usePromise(promise) });
 }
 
 export function filterLocale(locale: string | null): string | null {
-  if (locale?.startsWith('cs')) {
-    return 'cs';
-  }
-
-  if (locale?.startsWith('sk')) {
-    return 'cs';
-  }
-
-  if (locale?.startsWith('en')) {
-    return 'en';
-  }
-
+  if (locale?.startsWith('cs')) return 'cs';
+  if (locale?.startsWith('sk')) return 'cs';
+  if (locale?.startsWith('en')) return 'en';
   return null;
 }
 
