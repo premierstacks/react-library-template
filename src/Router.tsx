@@ -1,6 +1,6 @@
-import type { FC, ReactNode } from 'react';
+import { type FC, type ReactNode } from 'react';
 import { RouterProvider as AriaRouterProvider } from 'react-aria';
-import { createBrowserRouter, Outlet, RouterProvider, useHref, useNavigate, type NavigateOptions, type To } from 'react-router';
+import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration, useHref, useNavigate, type NavigateOptions, type To } from 'react-router';
 import { RouteErrorBoundary } from './errors/RouteErrorBoundary';
 import { IndexRoute } from './routes/IndexRoute';
 import { NotFoundRoute } from './routes/NotFoundRoute';
@@ -11,6 +11,7 @@ export const ReactAriaProvider: FC = (): ReactNode => {
 
   return (
     <AriaRouterProvider useHref={useHref} navigate={(to: To, opts: NavigateOptions | undefined) => void navigate(to, opts)}>
+      <ScrollRestoration />
       <Outlet />
     </AriaRouterProvider>
   );

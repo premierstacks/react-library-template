@@ -1,7 +1,8 @@
 import { Surface, useDevice, YouBackgroundPadding, YouCommonLink, YouRectShape, YouSurfacePadding, YouTopAppBar } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
 import { type FC, type ReactNode } from 'react';
-import { useTrans } from '../lang/useTrans';
+import { useLocale } from 'react-aria';
+import { changeStrings, useTrans } from '../lang/trans';
 
 const styles = stylex.create({
   rect: {
@@ -16,6 +17,7 @@ const styles = stylex.create({
 export const IndexRoute: FC = (): ReactNode => {
   const { phone } = useDevice();
   const trans = useTrans();
+  const { locale } = useLocale();
 
   return (
     <YouBackgroundPadding right={!phone} bottom={!phone}>
@@ -29,7 +31,10 @@ export const IndexRoute: FC = (): ReactNode => {
             </YouCommonLink>
           }
         >
-          <span />
+          <select defaultValue={locale} onChange={(e) => void changeStrings(e.target.value)}>
+            <option value="en">English</option>
+            <option value="cs">Česky</option>
+          </select>
         </YouTopAppBar>
       </YouSurfacePadding>
       <main>

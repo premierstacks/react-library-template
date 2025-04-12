@@ -1,4 +1,4 @@
-export default {
+const cs = {
   index: 'Ahoj světe!',
   login: 'Přihlásit se',
   'link.home': 'Domů',
@@ -6,3 +6,7 @@ export default {
   'link.about': 'O nás',
   'link.profile': 'Profil',
 };
+
+export type Strings = typeof cs;
+
+export default cs;

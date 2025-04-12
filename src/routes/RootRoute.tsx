@@ -13,8 +13,8 @@ import {
 } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
 import { type FC, type ReactNode } from 'react';
-import { Outlet, ScrollRestoration } from 'react-router';
-import { useTrans } from '../lang/useTrans';
+import { Outlet } from 'react-router';
+import { useTrans } from '../lang/trans';
 
 const styles = stylex.create({
   desktop: {
@@ -31,7 +31,6 @@ export const RootRoute: FC = (): ReactNode => {
 
   return (
     <>
-      <ScrollRestoration />
       <div {...stylex.props(tablet || desktop ? styles.desktop : null)}>
         <Outlet />
         <div {...stylex.props(phone ? styles.phone : null)} />
