@@ -2,7 +2,7 @@ import { applyWebpackPluginCopy, applyWebpackPluginHtml, createWebpackConfigBrow
 import { execSync } from 'child_process';
 import webpack from 'webpack';
 
-export default async function (env, argv) {
+export default function (env, argv) {
   const config = createWebpackConfigBrowserTypescriptBabelReactApp(env, argv);
 
   config.devServer.port = 3000;

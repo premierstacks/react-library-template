@@ -9,4 +9,4 @@ const cs = {
 
 export type Strings = typeof cs;
 
-export default cs;
+export { cs };

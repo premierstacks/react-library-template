@@ -1,9 +1,9 @@
-import { type FC, type ReactNode } from 'react';
+import type { FC, ReactElement } from 'react';
 import { Router } from './Router';
 import { ErrorBoundary } from './errors/ErrorBoundary';
 import { LocaleProvider } from './lang/trans';
 
-export const App: FC = (): ReactNode => {
+export const App: FC = (): ReactElement => {
   return (
     <ErrorBoundary>
       <LocaleProvider>

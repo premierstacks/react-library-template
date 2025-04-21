@@ -9,4 +9,4 @@ const en: Strings = {
   'link.profile': 'Profile',
 };
 
-export default en;
+export { en };

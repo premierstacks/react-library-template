@@ -40,11 +40,12 @@ const resource = defaultResource()
   )
   .merge(detectResources({ detectors: [browserDetector] }));
 
-const headers = process.env.OTLP_API_KEY
-  ? {
-      Authorization: `Bearer ${process.env.OTLP_API_KEY}`,
-    }
-  : undefined;
+const headers =
+  process.env.OTLP_API_KEY !== null
+    ? {
+        Authorization: `Bearer ${process.env.OTLP_API_KEY}`,
+      }
+    : undefined;
 
 const tracerProvider = new WebTracerProvider({
   resource: resource,
@@ -169,11 +170,19 @@ const logger = logs.getLogger('logs');
 window.addEventListener('error', (event: ErrorEvent) => {
   console.error(event);
 
+  let message: string | undefined = undefined;
+
+  if (event.error instanceof Error) {
+    message = event.error.message;
+  } else if (event.error instanceof String || typeof event.error === 'string') {
+    message = event.error.toString();
+  }
+
   logger.emit({
     attributes: {
       [ATTR_ERROR_TYPE]: '500',
       [ATTR_EXCEPTION_TYPE]: event.error instanceof Error ? event.error.name : undefined,
-      [ATTR_EXCEPTION_MESSAGE]: event.error instanceof Error ? event.error.message : event.error instanceof String || typeof event.error === 'string' ? event.error.toString() : undefined,
+      [ATTR_EXCEPTION_MESSAGE]: message,
       [ATTR_EXCEPTION_STACKTRACE]: event.error instanceof Error ? event.error.stack : undefined,
       [ATTR_URL_FULL]: location.href,
       [ATTR_URL_PATH]: location.pathname,

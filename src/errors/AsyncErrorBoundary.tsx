@@ -1,7 +1,7 @@
-import { useEffect, type FC, type ReactNode } from 'react';
+import { useEffect, type FC, type ReactElement } from 'react';
 import { useAsyncError } from 'react-router';
 
-export const AsyncErrorBoundary: FC<{ children?: ReactNode; assign?: URL; replace?: URL }> = ({ children, assign, replace }): ReactNode => {
+export const AsyncErrorBoundary: FC<{ children?: ReactElement; assign?: URL; replace?: URL }> = ({ children, assign, replace }): ReactElement | undefined => {
   const error = useAsyncError();
 
   useEffect(() => {

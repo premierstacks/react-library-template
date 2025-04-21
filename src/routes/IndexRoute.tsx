@@ -1,6 +1,6 @@
 import { Surface, useDevice, YouBackgroundPadding, YouCommonLink, YouRectShape, YouSurfacePadding, YouTopAppBar } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
-import { type FC, type ReactNode } from 'react';
+import type { FC, ReactElement } from 'react';
 import { useLocale } from 'react-aria';
 import { changeStrings, useTrans } from '../lang/trans';
 
@@ -14,19 +14,19 @@ const styles = stylex.create({
   },
 });
 
-export const IndexRoute: FC = (): ReactNode => {
+export const IndexRoute: FC = (): ReactElement => {
   const { phone } = useDevice();
   const trans = useTrans();
   const { locale } = useLocale();
 
   return (
-    <YouBackgroundPadding right={!phone} bottom={!phone}>
+    <YouBackgroundPadding bottom={!phone} right={!phone}>
       <YouSurfacePadding left={phone} right={phone}>
         <YouTopAppBar
           isSurfaceContainer
           leading={<YouRectShape xstyle={styles.rect} />}
           trailing={
-            <YouCommonLink isText href="/host/prihlaseni">
+            <YouCommonLink href="/host/prihlaseni" isText>
               {trans.format('login')}
             </YouCommonLink>
           }
@@ -38,8 +38,8 @@ export const IndexRoute: FC = (): ReactNode => {
         </YouTopAppBar>
       </YouSurfacePadding>
       <main>
-        <Surface tl tr bl br>
-          <YouSurfacePadding top left right bottom xstyle={styles.padding}>
+        <Surface bl br tl tr>
+          <YouSurfacePadding bottom left right top xstyle={styles.padding}>
             {trans.format('index')}
           </YouSurfacePadding>
         </Surface>

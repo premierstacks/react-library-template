@@ -1,13 +1,13 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { Component, type ErrorInfo, type ReactElement } from 'react';
 
-export class ErrorBoundary extends Component<{ children?: ReactNode; fallback?: ReactNode; assign?: URL; replace?: URL }, { error?: Error; errorInfo?: ErrorInfo }> {
-  constructor(props: { children: ReactNode; fallback: ReactNode }) {
+export class ErrorBoundary extends Component<{ children?: ReactElement; fallback?: ReactElement; assign?: URL; replace?: URL }, { error?: Error; errorInfo?: ErrorInfo }> {
+  public constructor(props: { children: ReactElement; fallback: ReactElement }) {
     super(props);
 
     this.state = { error: undefined, errorInfo: undefined };
   }
 
-  override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  public override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({ error, errorInfo });
 
     window.dispatchEvent(new ErrorEvent('error', { error }));
@@ -21,7 +21,7 @@ export class ErrorBoundary extends Component<{ children?: ReactNode; fallback?: 
     }
   }
 
-  override render(): ReactNode {
+  public override render(): ReactElement | undefined {
     if (this.state.error !== undefined) {
       return this.props.fallback;
     }

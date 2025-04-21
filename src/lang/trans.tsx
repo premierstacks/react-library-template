@@ -1,20 +1,45 @@
-import { useEffect, useState, type FC, type ReactNode } from 'react';
+import { use, useEffect, useState, type FC, type ReactElement } from 'react';
 import { I18nProvider, useLocale, useLocalizedStringFormatter } from 'react-aria';
-import { usePromise, wrapPromise, type WrappedPromise } from '../promises';
+import { wrapPromise } from '../promises';
 import type { Strings } from './cs';
 
-const cache = new Map<string, WrappedPromise<Strings>>();
+const cache = new Map<string, Promise<Strings>>();
 
-function getStrings(locale: string): WrappedPromise<Strings> {
+type LocaleEvent = CustomEvent<{
+  locale: string | null;
+}>;
+
+function isLocaleEvent(event: Event): event is LocaleEvent {
+  return event.type === 'changeLocale' && 'detail' in event && typeof event.detail === 'object' && event.detail !== null && 'locale' in event.detail;
+}
+
+export function changeLocale(locale: string | null): void {
+  const event: LocaleEvent = new CustomEvent('changeLocale', { detail: { locale: locale } });
+
+  window.dispatchEvent(event);
+}
+
+function getStrings(locale: string): Promise<Strings> {
   const cached = cache.get(locale);
 
-  if (cached) {
+  if (cached !== undefined) {
     return cached;
   }
 
-  const promise = wrapPromise(
-    locale === 'cs' ? import('./cs').then((m) => m.default) : locale === 'en' ? import('./en').then((m) => m.default) : Promise.reject(new Error(`Locale ${locale} not found`)),
-  );
+  let loader;
+
+  switch (locale) {
+    case 'cs':
+      loader = import('./cs').then((module) => module.cs);
+      break;
+    case 'en':
+      loader = import('./en').then((module) => module.en);
+      break;
+    default:
+      throw new Error(`Locale ${locale} not found`);
+  }
+
+  const promise = wrapPromise(loader);
 
   cache.set(locale, promise);
 
@@ -29,39 +54,33 @@ export function changeStrings(locale: string): Promise<Strings> {
   });
 }
 
-type LocaleEvent = CustomEvent<{
-  locale: string | null;
-}>;
-
-export function changeLocale(locale: string | null): void {
-  const event: LocaleEvent = new CustomEvent('changeLocale', { detail: { locale: locale } });
-
-  window.dispatchEvent(event);
-}
-
 export function useTrans() {
   const { locale } = useLocale();
 
   const promise = getStrings(locale);
 
-  return useLocalizedStringFormatter({ [locale]: usePromise(promise) });
+  return useLocalizedStringFormatter({ [locale]: use(promise) });
 }
 
 export function filterLocale(locale: string | null): string | null {
-  if (locale?.startsWith('cs')) return 'cs';
-  if (locale?.startsWith('sk')) return 'cs';
-  if (locale?.startsWith('en')) return 'en';
+  if (locale?.startsWith('cs') === true) return 'cs';
+  if (locale?.startsWith('sk') === true) return 'cs';
+  if (locale?.startsWith('en') === true) return 'en';
   return null;
 }
 
-export const LocaleProvider: FC<{ children: ReactNode }> = ({ children }): ReactNode => {
+export const LocaleProvider: FC<{ readonly children: ReactElement }> = ({ children }): ReactElement => {
   const { locale: defaultLocale } = useLocale();
 
   const [locale, setLocale] = useState<string | null>(() => filterLocale(localStorage.getItem('locale')));
 
   useEffect(() => {
     const handler = (event: Event) => {
-      const filteredLocale = filterLocale((event as LocaleEvent).detail.locale);
+      if (!isLocaleEvent(event)) {
+        return;
+      }
+
+      const filteredLocale = filterLocale(event.detail.locale);
 
       setLocale(filteredLocale);
 
