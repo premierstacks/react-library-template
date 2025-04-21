@@ -1,9 +1,11 @@
-import type { FC, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-export const NotFoundRoute: FC = (): ReactElement => {
+const LABEL = '404';
+
+export function NotFoundRoute(): ReactElement {
   return (
     <main>
-      <div>404</div>
+      <div>{LABEL}</div>
     </main>
   );
-};
+}

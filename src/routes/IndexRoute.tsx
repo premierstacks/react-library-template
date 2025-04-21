@@ -1,23 +1,25 @@
 import { Surface, useDevice, YouBackgroundPadding, YouCommonLink, YouRectShape, YouSurfacePadding, YouTopAppBar } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
-import type { FC, ReactElement } from 'react';
+import { useCallback, type ChangeEvent, type ReactElement } from 'react';
 import { useLocale } from 'react-aria';
 import { changeStrings, useTrans } from '../lang/trans';
 
 const styles = stylex.create({
   rect: {
-    width: 40,
     height: 40,
+    width: 40,
   },
   padding: {
     minHeight: '100vh',
   },
 });
 
-export const IndexRoute: FC = (): ReactElement => {
+export function IndexRoute(): ReactElement {
   const { phone } = useDevice();
   const trans = useTrans();
   const { locale } = useLocale();
+
+  const handleChange = useCallback((e: ChangeEvent<HTMLSelectElement>) => void changeStrings(e.target.value), []);
 
   return (
     <YouBackgroundPadding bottom={!phone} right={!phone}>
@@ -31,9 +33,9 @@ export const IndexRoute: FC = (): ReactElement => {
             </YouCommonLink>
           }
         >
-          <select defaultValue={locale} onChange={(e) => void changeStrings(e.target.value)}>
-            <option value="en">English</option>
-            <option value="cs">Česky</option>
+          <select defaultValue={locale} onChange={handleChange}>
+            <option value="en">{trans.format('locale.en')}</option>
+            <option value="cs">{trans.format('locale.cs')}</option>
           </select>
         </YouTopAppBar>
       </YouSurfacePadding>
@@ -46,4 +48,4 @@ export const IndexRoute: FC = (): ReactElement => {
       </main>
     </YouBackgroundPadding>
   );
-};
+}

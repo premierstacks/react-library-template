@@ -1,31 +1,43 @@
-import { Component, type ErrorInfo, type ReactElement } from 'react';
+import { Component, type ReactElement } from 'react';
 
-export class ErrorBoundary extends Component<{ children?: ReactElement; fallback?: ReactElement; assign?: URL; replace?: URL }, { error?: Error; errorInfo?: ErrorInfo }> {
+export class ErrorBoundary extends Component<{ children?: ReactElement; fallback?: ReactElement; assign?: URL; replace?: URL }, { error?: Error }> {
   public constructor(props: { children: ReactElement; fallback: ReactElement }) {
     super(props);
 
-    this.state = { error: undefined, errorInfo: undefined };
+    this.state = { error: undefined };
   }
 
-  public override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.setState({ error, errorInfo });
+  public override shouldComponentUpdate(_nextProps: Readonly<{ children?: ReactElement; fallback?: ReactElement; assign?: URL; replace?: URL }>, nextState: Readonly<{ error?: Error }>): boolean {
+    const { error } = this.state;
+    const { error: nextError } = nextState;
+
+    return error !== nextError;
+  }
+
+  public override componentDidCatch(error: Error): void {
+    this.setState({ error });
 
     window.dispatchEvent(new ErrorEvent('error', { error }));
 
-    if (this.props.assign !== undefined && this.props.assign.toString() !== location.toString()) {
-      location.assign(this.props.assign);
+    const { assign, replace } = this.props;
+
+    if (assign !== undefined && assign.toString() !== location.toString()) {
+      location.assign(assign);
     }
 
-    if (this.props.replace !== undefined && this.props.replace.toString() !== location.toString()) {
-      location.replace(this.props.replace);
+    if (replace !== undefined && replace.toString() !== location.toString()) {
+      location.replace(replace);
     }
   }
 
   public override render(): ReactElement | undefined {
-    if (this.state.error !== undefined) {
-      return this.props.fallback;
+    const { error } = this.state;
+    const { fallback, children } = this.props;
+
+    if (error !== undefined) {
+      return fallback;
     }
 
-    return this.props.children;
+    return children;
   }
 }

@@ -1,4 +1,4 @@
-import type { FC, ReactElement } from 'react';
+import { useCallback, type ReactElement } from 'react';
 import { RouterProvider as AriaRouterProvider } from 'react-aria';
 import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration, useHref, useNavigate, type NavigateOptions, type To } from 'react-router';
 import { RouteErrorBoundary } from './errors/RouteErrorBoundary';
@@ -6,17 +6,24 @@ import { IndexRoute } from './routes/IndexRoute';
 import { NotFoundRoute } from './routes/NotFoundRoute';
 import { RootRoute } from './routes/RootRoute';
 
-export const ReactAriaProvider: FC = (): ReactElement => {
+export function ReactAriaProvider(): ReactElement {
   const navigate = useNavigate();
+
+  const handleNavigate = useCallback(
+    (to: To, opts: NavigateOptions | undefined): void => {
+      void navigate(to, opts);
+    },
+    [navigate],
+  );
 
   return (
     // eslint-disable-next-line react-compiler/react-compiler
-    <AriaRouterProvider navigate={(to: To, opts: NavigateOptions | undefined) => void navigate(to, opts)} useHref={useHref}>
+    <AriaRouterProvider navigate={handleNavigate} useHref={useHref}>
       <ScrollRestoration />
       <Outlet />
     </AriaRouterProvider>
   );
-};
+}
 
 const router = createBrowserRouter([
   {
@@ -41,6 +48,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const Router: FC = (): ReactElement => {
+export function Router(): ReactElement {
   return <RouterProvider router={router} />;
-};
+}

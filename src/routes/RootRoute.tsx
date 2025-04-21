@@ -12,7 +12,7 @@ import {
   YouTriangleShape,
 } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
-import type { FC, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { Outlet } from 'react-router';
 import { useTrans } from '../lang/trans';
 
@@ -25,7 +25,7 @@ const styles = stylex.create({
   },
 });
 
-export const RootRoute: FC = (): ReactElement => {
+export function RootRoute(): ReactElement {
   const { tablet, phone, desktop } = useDevice();
   const trans = useTrans();
 
@@ -56,4 +56,4 @@ export const RootRoute: FC = (): ReactElement => {
       )}
     </>
   );
-};
+}

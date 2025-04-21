@@ -7,6 +7,8 @@ const en: Strings = {
   'link.contact': 'Contact',
   'link.about': 'About us',
   'link.profile': 'Profile',
+  'locale.en': 'English',
+  'locale.cs': 'Czech',
 };
 
 export { en };

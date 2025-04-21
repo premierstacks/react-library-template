@@ -1,4 +1,4 @@
-import { use, useEffect, useState, type FC, type ReactElement } from 'react';
+import { use, useEffect, useState, type ReactElement } from 'react';
 import { I18nProvider, useLocale, useLocalizedStringFormatter } from 'react-aria';
 import { wrapPromise } from '../promises';
 import type { Strings } from './cs';
@@ -69,7 +69,11 @@ export function filterLocale(locale: string | null): string | null {
   return null;
 }
 
-export const LocaleProvider: FC<{ readonly children: ReactElement }> = ({ children }): ReactElement => {
+interface LocaleProviderProps {
+  readonly children: ReactElement;
+}
+
+export function LocaleProvider({ children }: LocaleProviderProps): ReactElement {
   const { locale: defaultLocale } = useLocale();
 
   const [locale, setLocale] = useState<string | null>(() => filterLocale(localStorage.getItem('locale')));
@@ -128,4 +132,4 @@ export const LocaleProvider: FC<{ readonly children: ReactElement }> = ({ childr
   }, []);
 
   return <I18nProvider locale={filterLocale(locale) ?? filterLocale(defaultLocale) ?? 'cs'}>{children}</I18nProvider>;
-};
+}

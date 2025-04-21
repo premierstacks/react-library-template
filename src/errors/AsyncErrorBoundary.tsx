@@ -1,7 +1,13 @@
-import { useEffect, type FC, type ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
 import { useAsyncError } from 'react-router';
 
-export const AsyncErrorBoundary: FC<{ children?: ReactElement; assign?: URL; replace?: URL }> = ({ children, assign, replace }): ReactElement | undefined => {
+interface AsyncErrorBoundaryProps {
+  children?: ReactElement;
+  assign?: URL;
+  replace?: URL;
+}
+
+export function AsyncErrorBoundary({ children, assign, replace }: AsyncErrorBoundaryProps): ReactElement | undefined {
   const error = useAsyncError();
 
   useEffect(() => {
@@ -21,4 +27,4 @@ export const AsyncErrorBoundary: FC<{ children?: ReactElement; assign?: URL; rep
   }, [replace]);
 
   return children;
-};
+}

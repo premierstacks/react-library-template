@@ -1,7 +1,13 @@
-import { useEffect, type FC, type ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
 import { useRouteError } from 'react-router';
 
-export const RouteErrorBoundary: FC<{ children?: ReactElement; assign?: URL; replace?: URL }> = ({ children, assign, replace }): ReactElement | undefined => {
+interface RouteErrorBoundaryProps {
+  children?: ReactElement;
+  assign?: URL;
+  replace?: URL;
+}
+
+export function RouteErrorBoundary({ children, assign, replace }: RouteErrorBoundaryProps): ReactElement | undefined {
   const error = useRouteError();
 
   useEffect(() => {
@@ -21,4 +27,4 @@ export const RouteErrorBoundary: FC<{ children?: ReactElement; assign?: URL; rep
   }, [replace]);
 
   return children;
-};
+}

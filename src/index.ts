@@ -14,8 +14,8 @@ stylexify(
   document.documentElement,
   stylex.create({
     base: {
-      color: `rgb(${youSysColor.onSurface})`,
       backgroundColor: `rgb(${youSysColor.surfaceContainer})`,
+      color: `rgb(${youSysColor.onSurface})`,
       scrollbarColor: `rgb(${youSysColor.outline}) transparent`,
     },
   }).base,

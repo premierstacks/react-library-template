@@ -5,6 +5,8 @@ const cs = {
   'link.contact': 'Kontakt',
   'link.about': 'O nás',
   'link.profile': 'Profil',
+  'locale.en': 'Angličtina',
+  'locale.cs': 'Čeština',
 };
 
 export type Strings = typeof cs;
