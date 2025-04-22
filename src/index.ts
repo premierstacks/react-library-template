@@ -1,3 +1,5 @@
+import './css';
+
 import 'core-js/actual';
 
 import { stylexify } from '@premierstacks/material-design-you-react-aria-stack';

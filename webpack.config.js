@@ -3,18 +3,20 @@ import { execSync } from 'child_process';
 import webpack from 'webpack';
 
 export default function (env, argv) {
-  const config = createWebpackConfigBrowserTypescriptBabelReactApp(env, argv);
-
-  config.devServer.port = 3000;
-
-  config.entry = {
-    index: ['./src/index.scss', './src/index.ts'],
-  };
-
   const webpackMode = getWebpackMode(env, argv);
   const nodeEnv = getNodeEnv(env, argv);
   const appEnv = env.APP_ENV ?? process.env.APP_ENV ?? webpackMode;
 
+  const config = createWebpackConfigBrowserTypescriptBabelReactApp(env, argv);
+
+  config.devServer = config.devServer ?? {};
+  config.devServer.port = 3000;
+
+  config.entry = {
+    index: './src/index.ts',
+  };
+
+  config.plugins = config.plugins ?? [];
   config.plugins.push(
     new webpack.EnvironmentPlugin({
       NODE_ENV: nodeEnv,
@@ -26,6 +28,7 @@ export default function (env, argv) {
     }),
   );
 
+  config.plugins = config.plugins ?? [];
   config.plugins.push(
     new webpack.DefinePlugin({
       global: 'globalThis',

@@ -4,10 +4,6 @@ interface WrappedPromise<T> extends Promise<T> {
   reason: unknown;
 }
 
-export function isWrappedPromise<T>(promise: Promise<T>): promise is WrappedPromise<T> {
-  return 'status' in promise && 'value' in promise && 'reason' in promise;
-}
-
 export function wrapPromise<T>(promise: Promise<T>): Promise<T> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
   const wrapped = promise as WrappedPromise<T>;

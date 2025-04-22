@@ -2,6 +2,7 @@ import { use, useEffect, useState, type ReactElement } from 'react';
 import { I18nProvider, useLocale, useLocalizedStringFormatter } from 'react-aria';
 import { wrapPromise } from '../promises';
 import type { Strings } from './cs';
+import { useDocumentLang } from './seo';
 
 const cache = new Map<string, Promise<Strings>>();
 
@@ -131,5 +132,9 @@ export function LocaleProvider({ children }: LocaleProviderProps): ReactElement 
     };
   }, []);
 
-  return <I18nProvider locale={filterLocale(locale) ?? filterLocale(defaultLocale) ?? 'cs'}>{children}</I18nProvider>;
+  const final = filterLocale(locale) ?? filterLocale(defaultLocale) ?? 'cs';
+
+  useDocumentLang(final);
+
+  return <I18nProvider locale={final}>{children}</I18nProvider>;
 }
