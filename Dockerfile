@@ -1,4 +1,5 @@
 FROM node:lts AS build
+ENV NODE_ENV=production
 WORKDIR /app
 COPY package*.json .
 RUN npm run npm:install
