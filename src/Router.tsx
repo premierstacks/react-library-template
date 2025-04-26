@@ -1,6 +1,6 @@
 import { useCallback, type ReactElement } from 'react';
 import { RouterProvider as AriaRouterProvider } from 'react-aria';
-import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration, useHref, useNavigate, type NavigateOptions, type To } from 'react-router';
+import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration, useHref, useNavigate, type Location, type NavigateOptions, type To } from 'react-router';
 import { RouteErrorBoundary } from './errors/RouteErrorBoundary';
 import { IndexRoute } from './routes/IndexRoute';
 import { NotFoundRoute } from './routes/NotFoundRoute';
@@ -16,10 +16,12 @@ export function ReactAriaProvider(): ReactElement {
     [navigate],
   );
 
+  const handleKey = useCallback(({ pathname }: Location): string => pathname, []);
+
   return (
     // eslint-disable-next-line react-compiler/react-compiler
     <AriaRouterProvider navigate={handleNavigate} useHref={useHref}>
-      <ScrollRestoration />
+      <ScrollRestoration getKey={handleKey} />
       <Outlet />
     </AriaRouterProvider>
   );
