@@ -1,3 +1,5 @@
+import '../src/css/styles';
+
 import 'core-js/actual';
 
 document.querySelectorAll('link[rel="preload"][as="style"]').forEach((link) => {

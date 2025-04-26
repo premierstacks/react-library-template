@@ -1,6 +1,6 @@
 # [Browser Webpack TypeScript React Library Template](https://github.com/premierstacks/browser-webpack-typescript-react-library-template) by [Tomáš Chochola](https://github.com/tomchochola)
 
-The Browser Webpack TypeScript React Library Template offers a complete foundation for developing modern browser-based applications with TypeScript, React, and Webpack. Featuring pre-configured setups for React components, TypeScript, and asset optimization, this template streamlines your development workflow while ensuring clean and maintainable code. It’s designed to help developers start coding quickly with all the necessary tools integrated, including ESLint, Prettier, and Stylelint for code quality and consistency.
+The Browser Webpack TypeScript React Library Template provides a foundation for developing React libraries with TypeScript, adapted for a modern workflow where consumers integrate raw source code directly. It enables users to utilize TypeScript and SCSS files from the src directory within their own build processes, eliminating the need for library pre-bundling or separate type definitions and fostering a cleaner integration. While featuring tools like Webpack in the prototypes directory for local development, its primary purpose is direct source consumption.
 
 ## What is Premierstacks
 
@@ -87,18 +87,6 @@ Available commands:
 ```bash
 # provision for local environment
 npm run local
-
-# provision for development environment
-npm run development
-
-# provision for testing environment
-npm run testing
-
-# provision for staging environment
-npm run staging
-
-# provision for production environment
-npm run production
 
 # start webpack dev server
 npm run start

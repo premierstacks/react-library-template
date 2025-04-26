@@ -1,3 +1,4 @@
-import { createEslintConfigBrowserTypescriptBabelReact, createEslintIgnorePatterns, createEslintOverridesForConfigs } from '@premierstacks/eslint-stack';
+import { createEslintConfigBrowserTypescriptReact, createEslintConfigIgnores, createEslintConfigIgnoresRoot } from '@premierstacks/eslint-stack';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
-export default [...createEslintIgnorePatterns(['dist', 'test-results']), ...createEslintConfigBrowserTypescriptBabelReact(), ...createEslintOverridesForConfigs()];
+export default defineConfig([globalIgnores(['dist', 'test-results']), createEslintConfigIgnores(), createEslintConfigIgnoresRoot(), createEslintConfigBrowserTypescriptReact()]);

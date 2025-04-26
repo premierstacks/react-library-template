@@ -1,9 +1,11 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
-export const IndexRoute: FC = (): ReactNode => {
+const TITLE_LITERAL = 'IndexRoute';
+
+export function IndexRoute(): ReactElement {
   return (
     <main>
-      <div>IndexRoute</div>
+      <h1>{TITLE_LITERAL}</h1>
     </main>
   );
-};
+}
