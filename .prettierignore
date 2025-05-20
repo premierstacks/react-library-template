@@ -17,3 +17,13 @@
 
 # playwright
 /test-results
+
+# eslint
+*.tsx
+*.mts
+*.ts
+*.cts
+*.jsx
+*.mjs
+*.js
+*.cjs
