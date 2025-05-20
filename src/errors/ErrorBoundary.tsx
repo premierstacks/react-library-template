@@ -1,13 +1,26 @@
 import { Component, type ReactElement } from 'react';
 
-export class ErrorBoundary extends Component<{ children?: ReactElement; fallback?: ReactElement; assign?: URL; replace?: URL }, { error?: Error }> {
-  public constructor(props: { children: ReactElement; fallback: ReactElement }) {
+export class ErrorBoundary extends Component<{
+  children?: ReactElement;
+  fallback?: ReactElement;
+  assign?: URL;
+  replace?: URL;
+}, { error?: Error }> {
+  public constructor(props: {
+    children: ReactElement;
+    fallback: ReactElement;
+  }) {
     super(props);
 
     this.state = { error: undefined };
   }
 
-  public override shouldComponentUpdate(_nextProps: Readonly<{ children?: ReactElement; fallback?: ReactElement; assign?: URL; replace?: URL }>, nextState: Readonly<{ error?: Error }>): boolean {
+  public override shouldComponentUpdate(_nextProps: Readonly<{
+    children?: ReactElement;
+    fallback?: ReactElement;
+    assign?: URL;
+    replace?: URL;
+  }>, nextState: Readonly<{ error?: Error }>): boolean {
     const { error } = this.state;
     const { error: nextError } = nextState;
 

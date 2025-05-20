@@ -1,6 +1,6 @@
 const cs = {
-  index: 'Ahoj světe!',
-  login: 'Přihlásit se',
+  'index': 'Ahoj světe!',
+  'login': 'Přihlásit se',
   'link.home': 'Domů',
   'link.contact': 'Kontakt',
   'link.about': 'O nás',

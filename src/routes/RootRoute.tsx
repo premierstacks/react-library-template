@@ -32,25 +32,27 @@ export function RootRoute(): ReactElement {
   return (
     <>
       <nav>
-        {phone ? (
-          <YouNavigationBar isFixed isSurfaceContainer>
-            <NavigationBarLink href="/" icon={<YouPillShape />} text={trans.format('link.home')} />
-            <NavigationBarLink href="/contact" icon={<YouCircleShape />} text={trans.format('link.contact')} />
-            <NavigationBarLink href="/about" icon={<YouFlowerShape />} text={trans.format('link.about')} />
-            <NavigationBarLink href="/profile" icon={<YouTriangleShape />} text={trans.format('link.profile')} />
-          </YouNavigationBar>
-        ) : (
-          <YouNavigationRail isFixed isSurfaceContainer>
-            <YouBackgroundPadding bottom top>
-              <YouNavigationRailItems>
-                <YouNavigationRailLink href="/" icon={<YouPillShape />} text={trans.format('link.home')} />
-                <YouNavigationRailLink href="/contact" icon={<YouCircleShape />} text={trans.format('link.contact')} />
-                <YouNavigationRailLink href="/about" icon={<YouFlowerShape />} text={trans.format('link.about')} />
-                <YouNavigationRailLink href="/profile" icon={<YouTriangleShape />} text={trans.format('link.profile')} />
-              </YouNavigationRailItems>
-            </YouBackgroundPadding>
-          </YouNavigationRail>
-        )}
+        {phone
+          ? (
+              <YouNavigationBar isFixed isSurfaceContainer>
+                <NavigationBarLink href="/" icon={<YouPillShape />} text={trans.format('link.home')} />
+                <NavigationBarLink href="/contact" icon={<YouCircleShape />} text={trans.format('link.contact')} />
+                <NavigationBarLink href="/about" icon={<YouFlowerShape />} text={trans.format('link.about')} />
+                <NavigationBarLink href="/profile" icon={<YouTriangleShape />} text={trans.format('link.profile')} />
+              </YouNavigationBar>
+            )
+          : (
+              <YouNavigationRail isFixed isSurfaceContainer>
+                <YouBackgroundPadding bottom top>
+                  <YouNavigationRailItems>
+                    <YouNavigationRailLink href="/" icon={<YouPillShape />} text={trans.format('link.home')} />
+                    <YouNavigationRailLink href="/contact" icon={<YouCircleShape />} text={trans.format('link.contact')} />
+                    <YouNavigationRailLink href="/about" icon={<YouFlowerShape />} text={trans.format('link.about')} />
+                    <YouNavigationRailLink href="/profile" icon={<YouTriangleShape />} text={trans.format('link.profile')} />
+                  </YouNavigationRailItems>
+                </YouBackgroundPadding>
+              </YouNavigationRail>
+            )}
       </nav>
       <div {...stylex.props(tablet || desktop ? styles.desktop : styles.phone)}>
         <Outlet />

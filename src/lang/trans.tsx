@@ -32,10 +32,14 @@ function getStrings(locale: string): Promise<Strings> {
   switch (locale) {
     case 'cs':
       loader = import('./cs').then((module) => module.cs);
+
       break;
+
     case 'en':
       loader = import('./en').then((module) => module.en);
+
       break;
+
     default:
       throw new Error(`Locale ${locale} not found`);
   }
@@ -65,8 +69,11 @@ export function useTrans() {
 
 export function filterLocale(locale: string | null): string | null {
   if (locale?.startsWith('cs') === true) return 'cs';
+
   if (locale?.startsWith('sk') === true) return 'cs';
+
   if (locale?.startsWith('en') === true) return 'en';
+
   return null;
 }
 

@@ -1,4 +1,4 @@
-import { Surface, useDevice, YouBackgroundPadding, YouCommonLink, YouRectShape, YouSurfacePadding, YouTopAppBar } from '@premierstacks/material-design-you-react-aria-stack';
+import { Surface, useDevice, YouBackgroundPadding, YouRectShape, YouSmallTopAppBar, YouSurfacePadding, YouTextCommonLink } from '@premierstacks/material-design-you-react-aria-stack';
 import * as stylex from '@stylexjs/stylex';
 import { useCallback, type ChangeEvent, type ReactElement } from 'react';
 import { useLocale } from 'react-aria';
@@ -32,24 +32,22 @@ export function IndexRoute(): ReactElement {
     <YouBackgroundPadding bottom={!phone} right={!phone}>
       <YouSurfacePadding left={phone} right={phone}>
         <header>
-          <YouTopAppBar
+          <YouSmallTopAppBar
             isSurfaceContainer
             leading={<YouRectShape xstyle={styles.rect} />}
-            trailing={
-              <YouCommonLink href="/host/prihlaseni" isText>
-                {trans.format('login')}
-              </YouCommonLink>
-            }
+            trailing={(
+              <YouTextCommonLink href="/host/prihlaseni" label={trans.format('login')} />
+            )}
           >
             <select aria-label={trans.format('locale.label')} defaultValue={locale} onChange={handleChange}>
               <option value="en">{trans.format('locale.en')}</option>
               <option value="cs">{trans.format('locale.cs')}</option>
             </select>
-          </YouTopAppBar>
+          </YouSmallTopAppBar>
         </header>
       </YouSurfacePadding>
       <main>
-        <Surface bl br tl tr>
+        <Surface bottomleft bottomright topleft topright>
           <YouSurfacePadding bottom left right top xstyle={styles.padding}>
             <h1>{trans.format('index')}</h1>
           </YouSurfacePadding>

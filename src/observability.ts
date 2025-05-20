@@ -40,8 +40,8 @@ const resource = defaultResource()
   )
   .merge(detectResources({ detectors: [browserDetector] }));
 
-const headers =
-  process.env.OTLP_API_KEY !== null
+const headers
+  = process.env.OTLP_API_KEY !== null
     ? {
         Authorization: `Bearer ${process.env.OTLP_API_KEY}`,
       }
@@ -84,16 +84,15 @@ metrics.setGlobalMeterProvider(meterProvider);
 
 const loggerProvider = new LoggerProvider({
   resource: resource,
+  processors: [
+    new BatchLogRecordProcessor(
+      new OTLPLogExporter({
+        url: location.origin + '/otlp/v1/logs',
+        headers: headers,
+      }),
+    ),
+  ],
 });
-
-loggerProvider.addLogRecordProcessor(
-  new BatchLogRecordProcessor(
-    new OTLPLogExporter({
-      url: location.origin + '/otlp/v1/logs',
-      headers: headers,
-    }),
-  ),
-);
 
 logs.setGlobalLoggerProvider(loggerProvider);
 

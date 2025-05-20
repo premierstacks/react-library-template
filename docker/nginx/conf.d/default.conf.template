@@ -7,8 +7,8 @@ server {
   root ${NGINX_ROOT};
 
   include /etc/nginx/snippets/add_header_security_headers.conf;
-  expires epoch;
-  add_header Cache-Control "public";
+  expires 0;
+  add_header Cache-Control "public, no-cache, must-revalidate";
   add_header Vary "Accept-Encoding";
 
   if ($request_method !~ ^(GET)$) {
@@ -25,7 +25,7 @@ server {
 
     include /etc/nginx/snippets/add_header_security_headers_nonce.conf;
     expires 0;
-    add_header Cache-Control "private, no-store";
+    add_header Cache-Control "private, no-cache, must-revalidate";
   }
 
   location ~* ^/immutable\. {
