@@ -1,7 +1,6 @@
 import { metrics, trace, ValueType, type Gauge, type Histogram } from '@opentelemetry/api';
 import { logs, SeverityNumber } from '@opentelemetry/api-logs';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { CompositePropagator, W3CBaggagePropagator, W3CTraceContextPropagator } from '@opentelemetry/core';
 import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http';
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http';
@@ -60,7 +59,6 @@ const tracerProvider = new WebTracerProvider({
 });
 
 tracerProvider.register({
-  contextManager: new ZoneContextManager(),
   propagator: new CompositePropagator({
     propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
   }),

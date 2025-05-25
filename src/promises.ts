@@ -29,3 +29,13 @@ export function wrapPromise<T>(promise: Promise<T>): Promise<T> {
     },
   );
 }
+
+export function defaultPromise<T>(promise: Promise<T> | undefined): Promise<T> {
+  if (promise === undefined) {
+    return new Promise<T>(() => {
+      return undefined;
+    });
+  }
+
+  return promise;
+}
