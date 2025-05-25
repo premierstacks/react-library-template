@@ -34,8 +34,12 @@ export default defineConfig({
   webServer: {
     command: 'npm run playwright:start',
     url: 'http://localhost:3000',
+    reuseExistingServer: true,
+    timeout: 300 * 1000,
   },
   use: {
     baseURL: 'http://localhost:3000',
+    locale: 'en',
+    screenshot: 'only-on-failure',
   },
 });
