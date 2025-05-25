@@ -1,1 +1,1 @@
-export const lib = 'lib';
+export * from './components/ButtonComponent';

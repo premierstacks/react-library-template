@@ -6,5 +6,5 @@ test('/', async ({ page }) => {
   await waitForIdle(page);
 
   await expect(page).toHaveTitle(/premierstacks\/browser-webpack-typescript-react-library-template/);
-  await expect(page.locator('text=IndexRoute')).toBeVisible();
+  await expect(page.locator('text=Select component')).toBeVisible();
 });

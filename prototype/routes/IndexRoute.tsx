@@ -1,11 +1,13 @@
 import type { ReactElement } from 'react';
-
-const TITLE_LITERAL = 'IndexRoute';
+import { NavLink } from 'react-router';
 
 export function IndexRoute(): ReactElement {
   return (
     <main>
-      <h1>{TITLE_LITERAL}</h1>
+      <h1>Select component</h1>
+      <nav>
+        <NavLink to="/button-component">ButtonComponent</NavLink>
+      </nav>
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import { useCallback, type ReactElement } from 'react';
 import { RouterProvider as AriaRouterProvider } from 'react-aria';
 import { createBrowserRouter, Outlet, RouterProvider, ScrollRestoration, useHref, useNavigate, type Location, type NavigateOptions, type To } from 'react-router';
+import { ButtonComponentRoute } from './routes/ButtonComponentRoute';
 import { IndexRoute } from './routes/IndexRoute';
 import { RootRoute } from './routes/RootRoute';
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <IndexRoute />,
+          },
+          {
+            path: 'button-component',
+            element: <ButtonComponentRoute />,
           },
         ],
       },
