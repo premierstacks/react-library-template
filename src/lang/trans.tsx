@@ -1,6 +1,6 @@
 import { use, useEffect, useState, type ReactElement } from 'react';
 import { I18nProvider, useLocale, useLocalizedStringFormatter } from 'react-aria';
-import { wrapPromise } from '../promises';
+import { wrapPromise } from '../helpers/promises';
 import type { Strings } from './cs';
 import { useDocumentLang } from './seo';
 
@@ -143,5 +143,11 @@ export function LocaleProvider({ children }: LocaleProviderProps): ReactElement 
 
   useDocumentLang(final);
 
-  return <I18nProvider locale={final}>{children}</I18nProvider>;
+  return (
+    <I18nProvider
+      locale={final}
+    >
+      {children}
+    </I18nProvider>
+  );
 }

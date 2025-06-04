@@ -6,14 +6,16 @@ export function NotFoundRoute(): ReactElement {
   const trans = useTrans();
 
   useMeta({
-    title: trans.format('seo.404.title'),
-    keywords: trans.format('seo.404.keywords'),
-    description: trans.format('seo.404.description'),
+    title: trans.format('routes.not_found.title'),
+    keywords: trans.format('routes.not_found.keywords'),
+    description: trans.format('routes.not_found.description'),
   });
 
   return (
     <main>
-      <h1>{trans.format('404')}</h1>
+      <h1>
+        {trans.format('routes.not_found.h1')}
+      </h1>
     </main>
   );
 }
