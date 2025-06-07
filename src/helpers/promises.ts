@@ -30,11 +30,13 @@ export function wrapPromise<T>(promise: Promise<T>): Promise<T> {
   );
 }
 
-export function defaultPromise<T>(promise: Promise<T> | undefined): Promise<T> {
+export const UNLIMITED_PROMISE = new Promise<never>(() => {
+  return undefined;
+});
+
+export function unlimitedPromise<T>(promise: Promise<T> | undefined): Promise<T> {
   if (promise === undefined) {
-    return new Promise<T>(() => {
-      return undefined;
-    });
+    return UNLIMITED_PROMISE;
   }
 
   return promise;
