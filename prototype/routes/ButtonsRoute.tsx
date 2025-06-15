@@ -1,12 +1,16 @@
 import type { ReactElement } from 'react';
 import { ButtonComponent } from '../../src';
 
-export function ButtonComponentRoute(): ReactElement {
+export function ButtonsRoute(): ReactElement {
   return (
     <main>
-      <h1>ButtonComponent</h1>
+      <h1>
+        Buttons
+      </h1>
       <div>
-        <ButtonComponent label="Label" />
+        <ButtonComponent
+          label="Label"
+        />
       </div>
     </main>
   );

@@ -7,7 +7,9 @@ interface ButtonComponentProps extends ButtonProps {
 
 export function ButtonComponent({ label, ...props }: ButtonComponentProps): ReactElement {
   return (
-    <Button {...props}>
+    <Button
+      {...props}
+    >
       {label}
     </Button>
   );

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
+import { ButtonsRoute } from './routes/ButtonsRoute';
 import { IndexRoute } from './routes/IndexRoute';
-import { NotFoundRoute } from './routes/NotFoundRoute';
 import { ReactAriaProviderRoute } from './routes/ReactAriaProviderRoute';
 import { ScrollRestorationRoute } from './routes/ScrollRestorationRoute';
 import { SentinelRoute } from './routes/SentinelRoute';
@@ -21,8 +21,8 @@ export function createRouter() {
                   element: <IndexRoute />,
                 },
                 {
-                  path: '*',
-                  element: <NotFoundRoute />,
+                  path: 'buttons',
+                  element: <ButtonsRoute />,
                 },
               ],
             },
