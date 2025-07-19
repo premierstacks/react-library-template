@@ -13,7 +13,7 @@ export default function (env, argv) {
   config.devServer.port = 3000;
 
   config.entry = {
-    index: './prototype/index.ts',
+    index: './storybook/index.ts',
   };
 
   config.plugins = config.plugins ?? [];
@@ -39,7 +39,7 @@ export default function (env, argv) {
     config.devServer.client.overlay = false;
   }
 
-  applyWebpackPluginHtml(env, argv, config, { inject: true, template: './prototype/index.html', filename: 'index.html', chunks: ['index'], publicPath: '/' });
+  applyWebpackPluginHtml(env, argv, config, { inject: true, template: './storybook/index.html', filename: 'index.html', chunks: ['index'], publicPath: '/' });
 
   return config;
 }

@@ -1,9 +1,10 @@
 import { createBrowserRouter } from 'react-router';
 import { IndexRoute } from './routes/IndexRoute';
-import { NotFoundRoute } from './routes/NotFoundRoute';
 import { ReactAriaProviderRoute } from './routes/ReactAriaProviderRoute';
 import { ScrollRestorationRoute } from './routes/ScrollRestorationRoute';
 import { SentinelRoute } from './routes/SentinelRoute';
+import { SplitRoute } from './routes/SplitRoute';
+import { ButtonsRoute } from './routes/ButtonsRoute';
 
 export function createRouter() {
   return createBrowserRouter([
@@ -17,13 +18,19 @@ export function createRouter() {
               element: <ScrollRestorationRoute />,
               children: [
                 {
-                  index: true,
-                  element: <IndexRoute />,
+                  element: <SplitRoute />,
+                  children: [
+                    {
+                      index: true,
+                      element: <IndexRoute />,
+                    },
+                    {
+                      path: 'buttons',
+                      element: <ButtonsRoute />,
+                    },
+                  ],
                 },
-                {
-                  path: '*',
-                  element: <NotFoundRoute />,
-                },
+
               ],
             },
           ],
