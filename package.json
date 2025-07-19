@@ -70,7 +70,7 @@
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier -w .",
     "fix:stylelint": "stylelint --fix ./**/*.{sass,scss,css}",
-    "lint": "npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
+    "lint": "npm run stan && npm run lint:eslint && npm run lint:stylelint && npm run lint:prettier",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier -c .",
     "lint:stylelint": "stylelint ./**/*.{sass,scss,css}",
