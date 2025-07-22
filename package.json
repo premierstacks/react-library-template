@@ -31,16 +31,16 @@
   },
   "repository": "github:premierstacks/browser-webpack-typescript-react-library-template",
   "dependencies": {
-    "@stylexjs/stylex": "^0.13.0",
+    "@stylexjs/stylex": "latest",
     "react": "^19.1.0",
-    "react-aria": "^3.40.0",
-    "react-aria-components": "^1.9.0",
+    "react-aria": "^3.41.1",
+    "react-aria-components": "^1.10.1",
     "react-dom": "^19.1.0",
-    "react-router": "^7.6.0",
+    "react-router": "^7.7.0",
     "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0",
+    "@playwright/test": "^1.54.1",
     "@premierstacks/babel-stack": "github:premierstacks/babel-stack#main",
     "@premierstacks/eslint-stack": "github:premierstacks/eslint-stack#main",
     "@premierstacks/postcss-stack": "github:premierstacks/postcss-stack#main",
@@ -48,8 +48,9 @@
     "@premierstacks/stylelint-stack": "github:premierstacks/stylelint-stack#main",
     "@premierstacks/typescript-stack": "github:premierstacks/typescript-stack#main",
     "@premierstacks/webpack-stack": "github:premierstacks/webpack-stack#main",
-    "@types/react": "^19.1.4",
-    "@types/react-dom": "^19.1.5"
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "csstype": "^3.1.3"
   },
   "type": "module",
   "sideEffects": [
